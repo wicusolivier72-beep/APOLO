@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #0C0C0C;
+    color: #F4F4F0;
+    font-family: 'Inter', sans-serif;
+    background-image: 
+      radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+}
+
+/* Custom Blueprint Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0C0C0C;
+  border-left: 1px solid #2A2A2A;
+}
+::-webkit-scrollbar-thumb {
+  background: #2A2A2A;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00E5FF;
+}
+
+/* Blueprint Grid utility */
+.blueprint-grid {
+  background-image: linear-gradient(to right, #1E1E1E 1px, transparent 1px),
+                    linear-gradient(to bottom, #1E1E1E 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Monospace pill badge */
+.mono-pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background-color: #1A1A1A;
+  border: 1px solid #2A2A2A;
+  color: #00E5FF;
+  padding: 0.15rem 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Blueprint border container */
+.blueprint-card {
+  background-color: #121212;
+  border: 1px solid #2A2A2A;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.blueprint-card:hover {
+  border-color: #38BDF8;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.05);
+}
+
+/* Minimalist input underline */
+.blueprint-input {
+  background: transparent;
+  border-bottom: 1px solid #2A2A2A;
+  color: #F4F4F0;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.blueprint-input:focus {
+  outline: none;
+  border-bottom-color: #00E5FF;
+}
