@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { manuscriptGapData } from '../../data/manuscriptsData';
-import { Clock, FileText, Bookmark } from 'lucide-react';
+import { Clock, FileText } from 'lucide-react';
 
-export default function ManuscriptGapVisualizer({ onSaveClip }) {
+export default function ManuscriptGapVisualizer() {
   const [activeMetric, setActiveMetric] = useState('gap');
   const [selectedAuthor, setSelectedAuthor] = useState(manuscriptGapData[0]);
 
@@ -125,25 +125,9 @@ export default function ManuscriptGapVisualizer({ onSaveClip }) {
             </div>
           </div>
 
-          <p className="text-sm text-[#9CA3AF] leading-relaxed mb-4 p-3.5 bg-[#13151A] rounded-lg border border-[#222630]">
+          <p className="text-sm text-[#9CA3AF] leading-relaxed p-3.5 bg-[#13151A] rounded-lg border border-[#222630]">
             {selectedAuthor.notes}
           </p>
-
-          {onSaveClip && (
-            <button
-              onClick={() =>
-                onSaveClip({
-                  title: `${selectedAuthor.author} Manuscript Gap`,
-                  snippet: `${selectedAuthor.author} (${selectedAuthor.work}): Written ${selectedAuthor.dateWritten}, earliest copy ${selectedAuthor.earliestCopy} (${selectedAuthor.timeGapYears} yr gap, ${selectedAuthor.copiesCount} MSS).`,
-                  category: 'Manuscripts'
-                })
-              }
-              className="w-full py-2.5 border border-[#222630] bg-[#13151A] hover:border-[#E2C08D] hover:text-[#E2C08D] text-[#F3F4F6] text-sm font-medium rounded-lg transition-all flex items-center justify-center gap-2"
-            >
-              <Bookmark className="w-4 h-4 text-[#E2C08D]" />
-              <span>Save to Field Drawer</span>
-            </button>
-          )}
         </div>
       </div>
     </div>

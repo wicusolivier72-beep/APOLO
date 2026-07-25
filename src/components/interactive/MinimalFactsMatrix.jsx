@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { minimalFactsData } from '../../data/creedsJesusData';
-import { Check, X, Bookmark } from 'lucide-react';
+import { Check, X } from 'lucide-react';
 
-export default function MinimalFactsMatrix({ onSaveClip }) {
+export default function MinimalFactsMatrix() {
   const [selectedHypothesis, setSelectedHypothesis] = useState(minimalFactsData.hypotheses[4]);
 
   return (
@@ -102,23 +102,7 @@ export default function MinimalFactsMatrix({ onSaveClip }) {
           <span className="font-semibold text-[#F3F4F6] text-sm">{selectedHypothesis.name}</span>
         </div>
 
-        <p className="text-sm text-[#9CA3AF] leading-relaxed mb-4">{selectedHypothesis.critique}</p>
-
-        {onSaveClip && (
-          <button
-            onClick={() =>
-              onSaveClip({
-                title: `Minimal Facts: ${selectedHypothesis.name}`,
-                snippet: `${selectedHypothesis.name}: ${selectedHypothesis.critique}`,
-                category: 'Minimal Facts'
-              })
-            }
-            className="py-2 px-4 border border-[#222630] bg-[#13151A] hover:border-[#E2C08D] hover:text-[#E2C08D] text-[#F3F4F6] text-sm font-medium rounded-lg transition-all flex items-center justify-center gap-2"
-          >
-            <Bookmark className="w-4 h-4 text-[#E2C08D]" />
-            <span>Save to Drawer</span>
-          </button>
-        )}
+        <p className="text-sm text-[#9CA3AF] leading-relaxed">{selectedHypothesis.critique}</p>
       </div>
     </div>
   );

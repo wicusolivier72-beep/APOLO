@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { archaeologyArtifacts } from '../../data/archaeologyData';
-import { Calendar, MapPin, ChevronDown, ChevronUp, Bookmark } from 'lucide-react';
+import { Calendar, MapPin, ChevronDown, ChevronUp } from 'lucide-react';
 
-export default function ArchaeologyVaultModule({ searchFilter, onSaveClip }) {
+export default function ArchaeologyVaultModule({ searchFilter }) {
   const [expandedCardId, setExpandedCardId] = useState(null);
 
   const filteredArtifacts = archaeologyArtifacts.filter((art) => {
@@ -76,22 +76,6 @@ export default function ArchaeologyVaultModule({ searchFilter, onSaveClip }) {
                   {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                   <span>{isExpanded ? 'Hide Details' : 'View Inscription'}</span>
                 </button>
-
-                {onSaveClip && (
-                  <button
-                    onClick={() =>
-                      onSaveClip({
-                        title: art.title,
-                        snippet: `${art.title} (${art.date}): ${art.summary} Inscription: ${art.primaryInscription}`,
-                        category: 'Archaeology'
-                      })
-                    }
-                    className="flex items-center gap-1 text-[#9CA3AF] hover:text-[#F3F4F6]"
-                  >
-                    <Bookmark className="w-4 h-4" />
-                    <span>Save</span>
-                  </button>
-                )}
               </div>
             </div>
           );

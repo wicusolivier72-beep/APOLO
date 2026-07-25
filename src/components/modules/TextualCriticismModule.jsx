@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { manuscriptsList } from '../../data/manuscriptsData';
 import ManuscriptGapVisualizer from '../interactive/ManuscriptGapVisualizer';
-import { Calendar, MapPin, ChevronDown, ChevronUp, Bookmark } from 'lucide-react';
+import { Calendar, MapPin, ChevronDown, ChevronUp } from 'lucide-react';
 
-export default function TextualCriticismModule({ searchFilter, onSaveClip }) {
+export default function TextualCriticismModule({ searchFilter }) {
   const [expandedCardId, setExpandedCardId] = useState(null);
 
   const filteredMSS = manuscriptsList.filter((item) => {
@@ -30,7 +30,7 @@ export default function TextualCriticismModule({ searchFilter, onSaveClip }) {
       </div>
 
       {/* Visualizer */}
-      <ManuscriptGapVisualizer onSaveClip={onSaveClip} />
+      <ManuscriptGapVisualizer />
 
       {/* Catalog */}
       <div>
@@ -85,22 +85,6 @@ export default function TextualCriticismModule({ searchFilter, onSaveClip }) {
                     {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                     <span>{isExpanded ? 'Hide Syllogism' : 'View Syllogism'}</span>
                   </button>
-
-                  {onSaveClip && (
-                    <button
-                      onClick={() =>
-                        onSaveClip({
-                          title: mss.designation,
-                          snippet: `${mss.designation} (${mss.date}): ${mss.significance}`,
-                          category: 'Manuscript'
-                        })
-                      }
-                      className="flex items-center gap-1 text-[#9CA3AF] hover:text-[#F3F4F6]"
-                    >
-                      <Bookmark className="w-4 h-4" />
-                      <span>Save</span>
-                    </button>
-                  )}
                 </div>
               </div>
             );

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Search, Bookmark } from 'lucide-react';
+import { Search } from 'lucide-react';
 
-export default function Header({ searchFilter, setSearchFilter, savedClipsCount, onOpenDrawer }) {
+export default function Header({ searchFilter, setSearchFilter }) {
   return (
     <header className="sticky top-0 z-40 bg-[#0B0C0E]/90 backdrop-blur-md border-b border-[#222630]">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
@@ -15,42 +15,29 @@ export default function Header({ searchFilter, setSearchFilter, savedClipsCount,
               Apologetics <span className="text-[#E2C08D] font-medium">101</span>
             </h1>
             <p className="text-xs text-[#9CA3AF]">
-              Digital Museum & Field Guide
+              Digital Museum
             </p>
           </div>
         </div>
 
-        {/* Search & Drawer button */}
-        <div className="flex items-center gap-3">
-          <div className="relative w-40 sm:w-60">
-            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-[#9CA3AF]" />
-            <input
-              type="text"
-              value={searchFilter}
-              onChange={(e) => setSearchFilter(e.target.value)}
-              placeholder="Search..."
-              className="w-full bg-[#13151A] border border-[#222630] focus:border-[#E2C08D] pl-9 pr-3 py-1.5 text-sm text-[#F3F4F6] placeholder-[#9CA3AF] focus:outline-none transition-colors rounded-lg"
-            />
-            {searchFilter && (
-              <button
-                onClick={() => setSearchFilter('')}
-                className="absolute right-2 top-1/2 -translate-y-1/2 text-sm text-[#9CA3AF] hover:text-[#F3F4F6]"
-              >
-                ✕
-              </button>
-            )}
-          </div>
-
-          <button
-            onClick={onOpenDrawer}
-            className="flex items-center gap-2 px-3.5 py-1.5 border border-[#222630] bg-[#13151A] hover:border-[#E2C08D] text-sm text-[#F3F4F6] transition-all rounded-lg"
-          >
-            <Bookmark className="w-4 h-4 text-[#E2C08D]" />
-            <span className="hidden sm:inline font-medium">Field Drawer</span>
-            <span className="bg-[#1D212B] text-[#E2C08D] px-2 py-0.5 text-xs rounded-md font-semibold">
-              {savedClipsCount}
-            </span>
-          </button>
+        {/* Search */}
+        <div className="relative w-44 sm:w-64">
+          <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-[#9CA3AF]" />
+          <input
+            type="text"
+            value={searchFilter}
+            onChange={(e) => setSearchFilter(e.target.value)}
+            placeholder="Search..."
+            className="w-full bg-[#13151A] border border-[#222630] focus:border-[#E2C08D] pl-9 pr-3 py-1.5 text-sm text-[#F3F4F6] placeholder-[#9CA3AF] focus:outline-none transition-colors rounded-lg"
+          />
+          {searchFilter && (
+            <button
+              onClick={() => setSearchFilter('')}
+              className="absolute right-2 top-1/2 -translate-y-1/2 text-sm text-[#9CA3AF] hover:text-[#F3F4F6]"
+            >
+              ✕
+            </button>
+          )}
         </div>
       </div>
     </header>

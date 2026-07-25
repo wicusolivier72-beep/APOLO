@@ -5,7 +5,7 @@ export const modules = [
   { id: 'module-2', name: 'Archaeology Vault' },
   { id: 'module-3', name: 'Historical Jesus' },
   { id: 'module-4', name: 'Myth Busting' },
-  { id: 'module-5', name: 'Tactics & Guides' },
+  { id: 'module-5', name: 'Tactics' },
 ];
 
 export default function ModuleNav({ activeModule, setActiveModule }) {

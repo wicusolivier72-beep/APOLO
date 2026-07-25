@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Header from './components/layout/Header';
 import ModuleNav from './components/layout/ModuleNav';
 import TextualCriticismModule from './components/modules/TextualCriticismModule';
@@ -6,44 +6,11 @@ import ArchaeologyVaultModule from './components/modules/ArchaeologyVaultModule'
 import HistoricalJesusModule from './components/modules/HistoricalJesusModule';
 import MythBustingModule from './components/modules/MythBustingModule';
 import TacticsModule from './components/modules/TacticsModule';
-import CheatSheetDrawer from './components/ui/CheatSheetDrawer';
 import { FloatingPathsBackground } from '@/components/ui/floating-paths';
 
 export default function App() {
   const [activeModule, setActiveModule] = useState('module-1');
   const [searchFilter, setSearchFilter] = useState('');
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [savedClips, setSavedClips] = useState(() => {
-    try {
-      const saved = localStorage.getItem('apolo_saved_clips');
-      return saved ? JSON.parse(saved) : [];
-    } catch (e) {
-      return [];
-    }
-  });
-
-  useEffect(() => {
-    try {
-      localStorage.setItem('apolo_saved_clips', JSON.stringify(savedClips));
-    } catch (e) {
-      console.error('Failed to save clips to local storage', e);
-    }
-  }, [savedClips]);
-
-  const handleSaveClip = (clip) => {
-    if (!savedClips.some((c) => c.title === clip.title)) {
-      setSavedClips([clip, ...savedClips]);
-      setIsDrawerOpen(true);
-    }
-  };
-
-  const handleRemoveClip = (index) => {
-    setSavedClips(savedClips.filter((_, i) => i !== index));
-  };
-
-  const handleClearAllClips = () => {
-    setSavedClips([]);
-  };
 
   return (
     <div className="min-h-screen bg-[#0B0C0E] text-[#F3F4F6] flex flex-col font-sans selection:bg-[#E2C08D] selection:text-[#0B0C0E] antialiased">
@@ -51,8 +18,6 @@ export default function App() {
       <Header
         searchFilter={searchFilter}
         setSearchFilter={setSearchFilter}
-        savedClipsCount={savedClips.length}
-        onOpenDrawer={() => setIsDrawerOpen(true)}
       />
 
       {/* Hero Section with Integrated Floating Paths Animated Background */}
@@ -61,10 +26,10 @@ export default function App() {
           <div className="max-w-5xl mx-auto space-y-2 relative z-10">
             <span className="subtle-badge">Academic • Precise • Transparent</span>
             <h2 className="text-2xl sm:text-3xl font-bold text-[#F3F4F6] tracking-tight">
-              Apologetics 101 Field Guide
+              Apologetics 101
             </h2>
             <p className="text-sm text-[#9CA3AF] max-w-2xl leading-relaxed">
-              An interactive digital museum for manuscript evidence, verified archaeological inscriptions, early creedal timelines, and tactical conversation guides.
+              An interactive digital museum for manuscript evidence, verified archaeological inscriptions, early creedal timelines, and conversation guides.
             </p>
           </div>
         </FloatingPathsBackground>
@@ -76,19 +41,19 @@ export default function App() {
       {/* Main Module Content */}
       <main className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-8">
         {activeModule === 'module-1' && (
-          <TextualCriticismModule searchFilter={searchFilter} onSaveClip={handleSaveClip} />
+          <TextualCriticismModule searchFilter={searchFilter} />
         )}
         {activeModule === 'module-2' && (
-          <ArchaeologyVaultModule searchFilter={searchFilter} onSaveClip={handleSaveClip} />
+          <ArchaeologyVaultModule searchFilter={searchFilter} />
         )}
         {activeModule === 'module-3' && (
-          <HistoricalJesusModule searchFilter={searchFilter} onSaveClip={handleSaveClip} />
+          <HistoricalJesusModule searchFilter={searchFilter} />
         )}
         {activeModule === 'module-4' && (
-          <MythBustingModule searchFilter={searchFilter} onSaveClip={handleSaveClip} />
+          <MythBustingModule searchFilter={searchFilter} />
         )}
         {activeModule === 'module-5' && (
-          <TacticsModule searchFilter={searchFilter} onSaveClip={handleSaveClip} />
+          <TacticsModule searchFilter={searchFilter} />
         )}
       </main>
 
@@ -98,7 +63,7 @@ export default function App() {
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#E2C08D]"></span>
             <span className="text-[#F3F4F6] font-semibold">Apologetics 101</span>
-            <span>— Digital Museum & Field Guide</span>
+            <span>— Digital Museum</span>
           </div>
 
           <div className="text-xs text-[#6B7280]">
@@ -106,15 +71,6 @@ export default function App() {
           </div>
         </div>
       </footer>
-
-      {/* Field Drawer */}
-      <CheatSheetDrawer
-        isOpen={isDrawerOpen}
-        onClose={() => setIsDrawerOpen(false)}
-        savedClips={savedClips}
-        onRemoveClip={handleRemoveClip}
-        onClearAll={handleClearAllClips}
-      />
     </div>
   );
 }

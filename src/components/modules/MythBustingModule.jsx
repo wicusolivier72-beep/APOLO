@@ -1,8 +1,7 @@
 import React from 'react';
 import { mythBustingList } from '../../data/mythsData';
-import { Bookmark } from 'lucide-react';
 
-export default function MythBustingModule({ searchFilter, onSaveClip }) {
+export default function MythBustingModule({ searchFilter }) {
   const filteredMyths = mythBustingList.filter((m) => {
     if (!searchFilter) return true;
     const q = searchFilter.toLowerCase();
@@ -61,25 +60,6 @@ export default function MythBustingModule({ searchFilter, onSaveClip }) {
                   <li key={idx}>• {pt}</li>
                 ))}
               </ul>
-            </div>
-
-            <div className="pt-3 border-t border-[#222630] mt-4 flex items-center justify-between text-sm">
-              <span className="text-xs text-[#9CA3AF]">Myth Card</span>
-              {onSaveClip && (
-                <button
-                  onClick={() =>
-                    onSaveClip({
-                      title: `Myth Bust: ${myth.claim}`,
-                      snippet: `Myth: "${myth.claim}" ➔ Reality: ${myth.historicalReality} Primary evidence: ${myth.primaryEvidence}`,
-                      category: 'Myth Bust'
-                    })
-                  }
-                  className="flex items-center gap-1 text-[#9CA3AF] hover:text-[#F3F4F6]"
-                >
-                  <Bookmark className="w-4 h-4" />
-                  <span>Save</span>
-                </button>
-              )}
             </div>
           </div>
         ))}

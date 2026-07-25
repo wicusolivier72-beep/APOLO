@@ -1,9 +1,8 @@
 import React from 'react';
 import { creedTimelineSteps, nonChristianHistorians } from '../../data/creedsJesusData';
 import MinimalFactsMatrix from '../interactive/MinimalFactsMatrix';
-import { Bookmark } from 'lucide-react';
 
-export default function HistoricalJesusModule({ searchFilter, onSaveClip }) {
+export default function HistoricalJesusModule({ searchFilter }) {
   return (
     <div className="space-y-8">
       {/* Module Header */}
@@ -45,7 +44,7 @@ export default function HistoricalJesusModule({ searchFilter, onSaveClip }) {
       </div>
 
       {/* Minimal Facts */}
-      <MinimalFactsMatrix onSaveClip={onSaveClip} />
+      <MinimalFactsMatrix />
 
       {/* Non-Christian Historians */}
       <div>
@@ -74,21 +73,6 @@ export default function HistoricalJesusModule({ searchFilter, onSaveClip }) {
 
               <div className="pt-3 border-t border-[#222630] mt-3 flex items-center justify-between text-sm">
                 <span className="text-xs text-[#9CA3AF]">Historical Witness</span>
-                {onSaveClip && (
-                  <button
-                    onClick={() =>
-                      onSaveClip({
-                        title: h.historian,
-                        snippet: `${h.historian} (${h.work}): "${h.quote}"`,
-                        category: 'Witness'
-                      })
-                    }
-                    className="flex items-center gap-1 text-[#9CA3AF] hover:text-[#F3F4F6]"
-                  >
-                    <Bookmark className="w-4 h-4" />
-                    <span>Save</span>
-                  </button>
-                )}
               </div>
             </div>
           ))}

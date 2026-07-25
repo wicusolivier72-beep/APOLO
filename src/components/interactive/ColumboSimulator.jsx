@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { columboQuestions, selfRefutingStatements } from '../../data/tacticsData';
-import { Bookmark, Sparkles } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
-export default function ColumboSimulator({ onSaveClip }) {
+export default function ColumboSimulator() {
   const [activeTab, setActiveTab] = useState('columbo');
   const [selectedStatement, setSelectedStatement] = useState(selfRefutingStatements[0]);
 
@@ -113,22 +113,6 @@ export default function ColumboSimulator({ onSaveClip }) {
                 {selectedStatement.explanation}
               </div>
             </div>
-
-            {onSaveClip && (
-              <button
-                onClick={() =>
-                  onSaveClip({
-                    title: `Self-Refuting: "${selectedStatement.statement}"`,
-                    snippet: `Claim: "${selectedStatement.statement}" ➔ Question: "${selectedStatement.refutationQuestion}"`,
-                    category: 'Tactics'
-                  })
-                }
-                className="mt-4 w-full py-2.5 border border-[#222630] bg-[#13151A] hover:border-[#E2C08D] hover:text-[#E2C08D] text-[#F3F4F6] text-sm font-medium rounded-lg transition-all flex items-center justify-center gap-2"
-              >
-                <Bookmark className="w-4 h-4 text-[#E2C08D]" />
-                <span>Save to Field Drawer</span>
-              </button>
-            )}
           </div>
         </div>
       )}
