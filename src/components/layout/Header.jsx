@@ -7,12 +7,12 @@ export default function Header({ searchFilter, setSearchFilter }) {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
         {/* Brand */}
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-[#13151A] border border-[#222630] flex items-center justify-center text-[#E2C08D] font-bold text-xs font-mono">
-            EA
+          <div className="w-8 h-8 rounded-lg bg-[#13151A] border border-[#222630] flex items-center justify-center text-[#E2C08D] font-bold text-sm">
+            E
           </div>
           <div>
             <h1 className="text-base sm:text-lg font-semibold text-[#F3F4F6] tracking-tight">
-              EXTANT<span className="text-[#E2C08D] font-medium">.ARCHIVE</span>
+              Extant
             </h1>
             <p className="text-xs text-[#9CA3AF]">
               Digital Museum
