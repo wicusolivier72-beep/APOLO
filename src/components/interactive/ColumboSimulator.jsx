@@ -8,7 +8,7 @@ export default function ColumboSimulator() {
 
   return (
     <div className="blueprint-card p-5 sm:p-6 mb-8 border border-[#222630] bg-[#13151A] rounded-xl">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#222630] pb-4 mb-5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#222630] pb-4 mb-6">
         <div>
           <h3 className="text-base font-semibold text-[#F3F4F6]">
             Columbo Tactics & Self-Refuting Guide
@@ -21,7 +21,7 @@ export default function ColumboSimulator() {
         <div className="flex items-center bg-[#0B0C0E] p-1 rounded-lg border border-[#222630] text-sm self-start sm:self-auto">
           <button
             onClick={() => setActiveTab('columbo')}
-            className={`px-3 py-1.5 rounded-md transition-all ${
+            className={`px-3.5 py-1.5 rounded-md transition-all ${
               activeTab === 'columbo' ? 'bg-[#1D212B] text-[#E2C08D] font-medium' : 'text-[#9CA3AF] hover:text-[#F3F4F6]'
             }`}
           >
@@ -29,7 +29,7 @@ export default function ColumboSimulator() {
           </button>
           <button
             onClick={() => setActiveTab('refuting')}
-            className={`px-3 py-1.5 rounded-md transition-all ${
+            className={`px-3.5 py-1.5 rounded-md transition-all ${
               activeTab === 'refuting' ? 'bg-[#1D212B] text-[#E2C08D] font-medium' : 'text-[#9CA3AF] hover:text-[#F3F4F6]'
             }`}
           >
@@ -39,26 +39,32 @@ export default function ColumboSimulator() {
       </div>
 
       {activeTab === 'columbo' ? (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {columboQuestions.map((q) => (
-            <div key={q.step} className="border border-[#222630] bg-[#0B0C0E] p-4.5 rounded-xl flex flex-col justify-between text-sm">
-              <div>
-                <div className="flex items-center justify-between border-b border-[#222630] pb-2 mb-3">
-                  <span className="text-xs text-[#E2C08D] font-semibold">Step {q.step}</span>
-                  <span className="text-sm text-[#F3F4F6] font-semibold">{q.title}</span>
+            <div key={q.step} className="border border-[#222630] bg-[#0B0C0E] p-5 rounded-xl flex flex-col justify-between h-full text-sm">
+              <div className="flex flex-col h-full justify-between">
+                <div>
+                  <div className="flex items-center justify-between border-b border-[#222630] pb-3 mb-4">
+                    <span className="text-xs text-[#E2C08D] font-bold shrink-0">Step {q.step}</span>
+                    <span className="text-sm text-[#F3F4F6] font-semibold text-right leading-tight ml-2">{q.title}</span>
+                  </div>
+
+                  <div className="p-4 bg-[#13151A] border border-[#222630] rounded-lg mb-4 text-sm text-[#E2C08D] font-medium text-center leading-snug">
+                    "{q.questionText}"
+                  </div>
+
+                  <p className="text-sm text-[#9CA3AF] mb-4 leading-relaxed">{q.purpose}</p>
                 </div>
 
-                <div className="p-3.5 bg-[#13151A] border border-[#222630] rounded-lg mb-3 text-sm text-[#E2C08D] font-medium">
-                  "{q.questionText}"
-                </div>
-
-                <p className="text-sm text-[#9CA3AF] mb-3 leading-relaxed">{q.purpose}</p>
-
-                <div className="p-3 bg-[#13151A] border border-[#222630] rounded-lg text-xs space-y-1">
-                  <div className="text-xs text-[#9CA3AF]">Skeptic Claim:</div>
-                  <div className="text-[#F3F4F6] italic text-xs">{q.exampleClaim}</div>
-                  <div className="text-xs text-[#E2C08D] mt-2">Recommended Response:</div>
-                  <div className="text-[#F3F4F6] font-medium text-xs">{q.recommendedResponse}</div>
+                <div className="p-4 bg-[#13151A] border border-[#222630] rounded-lg text-sm space-y-3 mt-auto">
+                  <div>
+                    <div className="text-xs text-[#9CA3AF] font-medium mb-1">Skeptic Claim:</div>
+                    <div className="text-[#F3F4F6] italic text-sm leading-snug">{q.exampleClaim}</div>
+                  </div>
+                  <div className="pt-2.5 border-t border-[#222630]">
+                    <div className="text-xs text-[#E2C08D] font-semibold mb-1">Recommended Response:</div>
+                    <div className="text-[#F3F4F6] font-medium text-sm leading-snug">{q.recommendedResponse}</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -92,24 +98,24 @@ export default function ColumboSimulator() {
                 Analysis & Turning Question
               </div>
 
-              <div className="mb-3">
-                <div className="text-xs text-[#9CA3AF] mb-1">Claim:</div>
-                <div className="text-sm text-[#F3F4F6] p-3 bg-[#13151A] border border-[#222630] rounded-lg">
+              <div className="mb-4">
+                <div className="text-xs text-[#9CA3AF] mb-1.5">Claim:</div>
+                <div className="text-sm text-[#F3F4F6] p-3.5 bg-[#13151A] border border-[#222630] rounded-lg leading-relaxed">
                   "{selectedStatement.statement}"
                 </div>
               </div>
 
-              <div className="mb-3">
-                <div className="text-xs text-[#E2C08D] mb-1 font-semibold flex items-center gap-1">
+              <div className="mb-4">
+                <div className="text-xs text-[#E2C08D] mb-1.5 font-semibold flex items-center gap-1.5">
                   <Sparkles className="w-4 h-4 text-[#E2C08D]" />
                   <span>Reframing Question:</span>
                 </div>
-                <div className="text-sm font-semibold text-[#E2C08D] p-3 bg-[#13151A] border border-[#222630] rounded-lg">
+                <div className="text-sm font-semibold text-[#E2C08D] p-3.5 bg-[#13151A] border border-[#222630] rounded-lg leading-relaxed">
                   "{selectedStatement.refutationQuestion}"
                 </div>
               </div>
 
-              <div className="p-3.5 bg-[#13151A] border border-[#222630] rounded-lg text-sm text-[#9CA3AF] leading-relaxed">
+              <div className="p-4 bg-[#13151A] border border-[#222630] rounded-lg text-sm text-[#9CA3AF] leading-relaxed">
                 {selectedStatement.explanation}
               </div>
             </div>
