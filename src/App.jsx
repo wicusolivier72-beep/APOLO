@@ -26,7 +26,7 @@ export default function App() {
           <div className="max-w-5xl mx-auto space-y-2 relative z-10">
             <span className="subtle-badge">Academic • Precise • Transparent</span>
             <h2 className="text-2xl sm:text-3xl font-bold text-[#F3F4F6] tracking-tight">
-              Apologetics 101
+              EXTANT<span className="text-[#E2C08D] font-normal">.ARCHIVE</span>
             </h2>
             <p className="text-sm text-[#9CA3AF] max-w-2xl leading-relaxed">
               An interactive digital museum for manuscript evidence, verified archaeological inscriptions, early creedal timelines, and conversation guides.
@@ -62,7 +62,7 @@ export default function App() {
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#E2C08D]"></span>
-            <span className="text-[#F3F4F6] font-semibold">Apologetics 101</span>
+            <span className="text-[#F3F4F6] font-semibold">EXTANT.ARCHIVE</span>
             <span>— Digital Museum</span>
           </div>
 
