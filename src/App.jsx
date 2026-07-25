@@ -7,6 +7,7 @@ import HistoricalJesusModule from './components/modules/HistoricalJesusModule';
 import MythBustingModule from './components/modules/MythBustingModule';
 import TacticsModule from './components/modules/TacticsModule';
 import { FloatingPathsBackground } from '@/components/ui/floating-paths';
+import { LogoIcon } from '@/components/ui/LogoIcon';
 import { ArrowDown, Layers, Landmark, History, ShieldAlert, MessageSquare } from 'lucide-react';
 
 export default function App() {
@@ -35,7 +36,8 @@ export default function App() {
       <section className="relative border-b border-[#222630] bg-[#0B0C0E] min-h-[calc(100vh-4rem)] flex flex-col justify-center overflow-hidden">
         <FloatingPathsBackground position={-1} className="w-full min-h-[calc(100vh-4rem)] flex flex-col justify-center items-center py-16 px-4 sm:px-6">
           <div className="max-w-4xl mx-auto text-center space-y-6 relative z-10 my-auto">
-            <div>
+            <div className="space-y-3">
+              <LogoIcon className="w-16 h-16 sm:w-20 sm:h-20 mx-auto text-[#E2C08D]" />
               <span className="subtle-badge">Academic • Precise • Transparent</span>
             </div>
 
@@ -133,7 +135,7 @@ export default function App() {
       <footer className="border-t border-[#222630] bg-[#13151A] py-6 px-4 sm:px-6 text-xs text-[#9CA3AF]">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#E2C08D]"></span>
+            <LogoIcon className="w-4 h-4 text-[#E2C08D]" />
             <span className="text-[#F3F4F6] font-semibold">Extant</span>
             <span>— Digital Museum</span>
           </div>
