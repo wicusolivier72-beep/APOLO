@@ -7,6 +7,7 @@ import HistoricalJesusModule from './components/modules/HistoricalJesusModule';
 import MythBustingModule from './components/modules/MythBustingModule';
 import TacticsModule from './components/modules/TacticsModule';
 import CheatSheetDrawer from './components/ui/CheatSheetDrawer';
+import { FloatingPathsBackground } from '@/components/ui/floating-paths';
 
 export default function App() {
   const [activeModule, setActiveModule] = useState('module-1');
@@ -54,21 +55,23 @@ export default function App() {
         onOpenDrawer={() => setIsDrawerOpen(true)}
       />
 
+      {/* Hero Section with Integrated Floating Paths Animated Background */}
+      <section className="relative border-b border-[#222630] bg-[#0B0C0E] overflow-hidden">
+        <FloatingPathsBackground position={-1} className="py-10 px-4 sm:px-6">
+          <div className="max-w-5xl mx-auto space-y-2 relative z-10">
+            <span className="subtle-badge">Academic • Precise • Transparent</span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#F3F4F6] tracking-tight">
+              Apologetics 101 Field Guide
+            </h2>
+            <p className="text-sm text-[#9CA3AF] max-w-2xl leading-relaxed">
+              An interactive digital museum for manuscript evidence, verified archaeological inscriptions, early creedal timelines, and tactical conversation guides.
+            </p>
+          </div>
+        </FloatingPathsBackground>
+      </section>
+
       {/* Module Nav */}
       <ModuleNav activeModule={activeModule} setActiveModule={setActiveModule} />
-
-      {/* Clean Hero Header */}
-      <section className="border-b border-[#222630] bg-[#0B0C0E] py-8 px-4 sm:px-6">
-        <div className="max-w-5xl mx-auto space-y-1.5">
-          <span className="subtle-badge">Academic • Precise • Transparent</span>
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#F3F4F6] tracking-tight">
-            Apologetics 101 Field Guide
-          </h2>
-          <p className="text-xs sm:text-sm text-[#9CA3AF] max-w-2xl leading-relaxed">
-            An interactive digital museum for manuscript evidence, verified archaeological inscriptions, early creedal timelines, and tactical conversation guides.
-          </p>
-        </div>
-      </section>
 
       {/* Main Module Content */}
       <main className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-8">
