@@ -4,75 +4,69 @@
 
 @layer base {
   body {
-    background-color: #0C0C0C;
-    color: #F4F4F0;
-    font-family: 'Inter', sans-serif;
-    background-image: 
-      radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
-    background-size: 24px 24px;
+    background-color: #09090B;
+    color: #F4F4F5;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.01em;
   }
 }
 
-/* Custom Blueprint Scrollbar */
+/* Custom Minimal Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #0C0C0C;
-  border-left: 1px solid #2A2A2A;
+  background: #09090B;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2A2A2A;
-  border-radius: 0px;
+  background: #27272A;
+  border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #00E5FF;
+  background: #E2C08D;
 }
 
-/* Blueprint Grid utility */
-.blueprint-grid {
-  background-image: linear-gradient(to right, #1E1E1E 1px, transparent 1px),
-                    linear-gradient(to bottom, #1E1E1E 1px, transparent 1px);
-  background-size: 32px 32px;
-}
-
-/* Monospace pill badge */
+/* Quiet Monospace pill badge */
 .mono-pill {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  background-color: #1A1A1A;
-  border: 1px solid #2A2A2A;
-  color: #00E5FF;
-  padding: 0.15rem 0.5rem;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid #27272A;
+  color: #E2C08D;
+  padding: 0.2rem 0.55rem;
+  border-radius: 2px;
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
 }
 
-/* Blueprint border container */
+/* Elegant minimal card */
 .blueprint-card {
-  background-color: #121212;
-  border: 1px solid #2A2A2A;
-  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  background-color: #121215;
+  border: 1px solid #27272A;
+  border-radius: 4px;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
 }
 
 .blueprint-card:hover {
-  border-color: #38BDF8;
-  box-shadow: 0 0 15px rgba(56, 189, 248, 0.05);
+  border-color: #3F3F46;
+  background-color: #16161A;
 }
 
-/* Minimalist input underline */
+/* Minimal input */
 .blueprint-input {
-  background: transparent;
-  border-bottom: 1px solid #2A2A2A;
-  color: #F4F4F0;
+  background-color: #121215;
+  border: 1px solid #27272A;
+  color: #F4F4F5;
   font-family: 'JetBrains Mono', monospace;
+  border-radius: 4px;
+  transition: border-color 0.2s ease;
 }
 
 .blueprint-input:focus {
   outline: none;
-  border-bottom-color: #00E5FF;
+  border-color: #E2C08D;
 }

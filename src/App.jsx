@@ -7,7 +7,6 @@ import HistoricalJesusModule from './components/modules/HistoricalJesusModule';
 import MythBustingModule from './components/modules/MythBustingModule';
 import TacticsModule from './components/modules/TacticsModule';
 import CheatSheetDrawer from './components/ui/CheatSheetDrawer';
-import { Layers, Landmark, History, Zap, MessageSquareCode, ShieldCheck, Database, Award } from 'lucide-react';
 
 export default function App() {
   const [activeModule, setActiveModule] = useState('module-1');
@@ -31,7 +30,6 @@ export default function App() {
   }, [savedClips]);
 
   const handleSaveClip = (clip) => {
-    // Avoid duplicate clip by title
     if (!savedClips.some((c) => c.title === clip.title)) {
       setSavedClips([clip, ...savedClips]);
       setIsDrawerOpen(true);
@@ -47,8 +45,8 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0C0C0C] text-[#F4F4F0] flex flex-col font-sans selection:bg-[#00E5FF] selection:text-[#0C0C0C]">
-      {/* Top Header */}
+    <div className="min-h-screen bg-[#09090B] text-[#F4F4F5] flex flex-col font-sans selection:bg-[#E2C08D] selection:text-[#09090B] antialiased">
+      {/* Header */}
       <Header
         searchFilter={searchFilter}
         setSearchFilter={setSearchFilter}
@@ -56,49 +54,24 @@ export default function App() {
         onOpenDrawer={() => setIsDrawerOpen(true)}
       />
 
-      {/* Module Matrix Navigation */}
+      {/* Module Nav */}
       <ModuleNav activeModule={activeModule} setActiveModule={setActiveModule} />
 
-      {/* Hero Studio Banner */}
-      <section className="border-b border-[#2A2A2A] bg-[#121212]/80 px-4 py-6 font-mono">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <span className="mono-pill text-[#00E5FF]">WES HUFF VIBE ARCHITECTURE</span>
-              <span className="text-[10px] text-[#8E8E8A]">[ACADEMIC // TRANSPARENT // MYTH-BUSTING]</span>
-            </div>
-            <h2 className="text-xl md:text-2xl font-extrabold text-[#F4F4F0] tracking-wider uppercase">
-              APOLOGETICS 101 FIELD BLUEPRINT
-            </h2>
-            <p className="text-xs text-[#8E8E8A] max-w-3xl leading-relaxed">
-              Rooted exclusively in primary manuscript papyri, archaeological artifacts, early creedal timing, and logical self-refuting analysis.
-            </p>
-          </div>
-
-          {/* Quick Metric Blueprint Badges */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full lg:w-auto">
-            <div className="p-2.5 border border-[#2A2A2A] bg-[#0C0C0C] text-center">
-              <div className="text-xs font-bold text-[#00E5FF]">5,856+</div>
-              <div className="text-[9px] text-[#8E8E8A] uppercase">Greek NT MSS</div>
-            </div>
-            <div className="p-2.5 border border-[#2A2A2A] bg-[#0C0C0C] text-center">
-              <div className="text-xs font-bold text-[#00E5FF]">30-50 YRS</div>
-              <div className="text-[9px] text-[#8E8E8A] uppercase">Earliest Gap</div>
-            </div>
-            <div className="p-2.5 border border-[#2A2A2A] bg-[#0C0C0C] text-center">
-              <div className="text-xs font-bold text-[#00E5FF]">100%</div>
-              <div className="text-[9px] text-[#8E8E8A] uppercase">Verifiable Data</div>
-            </div>
-            <div className="p-2.5 border border-[#2A2A2A] bg-[#0C0C0C] text-center">
-              <div className="text-xs font-bold text-[#00E5FF]">0 FLUFF</div>
-              <div className="text-[9px] text-[#8E8E8A] uppercase">Brutalist Grid</div>
-            </div>
-          </div>
+      {/* Clean Hero Header */}
+      <section className="border-b border-[#27272A] bg-[#09090B] py-10 px-4 md:px-6">
+        <div className="max-w-6xl mx-auto space-y-2 font-mono">
+          <span className="mono-pill">ACADEMIC // TRANSPARENT // MYTH-BUSTING</span>
+          <h2 className="text-2xl md:text-3xl font-extrabold text-[#F4F4F5] tracking-tight uppercase">
+            APOLOGETICS 101 FIELD BLUEPRINT
+          </h2>
+          <p className="text-xs text-[#71717A] max-w-2xl leading-relaxed">
+            A fast, structured digital museum and field manual for Christian apologetics and biblical reliability. Rooted in primary manuscripts, verified archaeological inscriptions, early creedal timing, and logical self-refuting analysis.
+          </p>
         </div>
       </section>
 
-      {/* Main Content Module View Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 py-8">
+      {/* Main Module Content */}
+      <main className="flex-1 max-w-6xl w-full mx-auto px-4 md:px-6 py-8">
         {activeModule === 'module-1' && (
           <TextualCriticismModule searchFilter={searchFilter} onSaveClip={handleSaveClip} />
         )}
@@ -116,26 +89,22 @@ export default function App() {
         )}
       </main>
 
-      {/* Blueprint Footer */}
-      <footer className="border-t border-[#2A2A2A] bg-[#121212] py-6 px-4 font-mono text-xs text-[#8E8E8A]">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      {/* Footer */}
+      <footer className="border-t border-[#27272A] bg-[#121215] py-6 px-4 md:px-6 font-mono text-xs text-[#71717A]">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#00E5FF]"></span>
-            <span className="text-[#F4F4F0] font-bold">APOLOGETICS 101</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E2C08D]"></span>
+            <span className="text-[#F4F4F5] font-bold">APOLOGETICS 101</span>
             <span>— DIGITAL MUSEUM & FIELD MANUAL</span>
           </div>
 
-          <div className="flex items-center gap-4 text-[10px]">
-            <span>DESIGN: EDITORIAL BRUTALISM</span>
-            <span className="text-[#2A2A2A]">|</span>
-            <span>FRAMEWORK: REACT + VITE + TAILWIND</span>
-            <span className="text-[#2A2A2A]">|</span>
-            <span className="text-[#00E5FF]">PRIMARY SOURCES FIRST</span>
+          <div className="text-[11px] text-[#71717A]">
+            PRIMARY SOURCES FIRST • ZERO FLUFF
           </div>
         </div>
       </footer>
 
-      {/* Sliding Field Drawer */}
+      {/* Field Drawer */}
       <CheatSheetDrawer
         isOpen={isDrawerOpen}
         onClose={() => setIsDrawerOpen(false)}
