@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { manuscriptsList } from '../../data/manuscriptsData';
 import ManuscriptGapVisualizer from '../interactive/ManuscriptGapVisualizer';
-import TextualVariantBreakdown from '../interactive/TextualVariantBreakdown';
 import { Calendar, MapPin, ChevronDown, ChevronUp, Bookmark } from 'lucide-react';
 
 export default function TextualCriticismModule({ searchFilter, onSaveClip }) {
@@ -19,20 +18,19 @@ export default function TextualCriticismModule({ searchFilter, onSaveClip }) {
 
   return (
     <div className="space-y-8">
-      {/* Module Title */}
+      {/* Module Header */}
       <div className="border-b border-[#222630] pb-4">
-        <span className="subtle-badge">Manuscript Preservation & Variants</span>
+        <span className="subtle-badge">Manuscript Preservation & Copy Fidelity</span>
         <h2 className="text-xl font-semibold text-[#F3F4F6] mt-2">
           Textual Criticism & Manuscripts
         </h2>
         <p className="text-xs text-[#9CA3AF] mt-1 max-w-2xl leading-relaxed">
-          Primary evidence on papyri, uncial codices, variant classification, and manuscript transmission.
+          Primary evidence on papyri, uncial codices, and manuscript transmission across 5,800+ Greek manuscripts.
         </p>
       </div>
 
-      {/* Visualizers */}
+      {/* Visualizer */}
       <ManuscriptGapVisualizer onSaveClip={onSaveClip} />
-      <TextualVariantBreakdown onSaveClip={onSaveClip} />
 
       {/* Catalog */}
       <div>
