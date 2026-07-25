@@ -18,39 +18,39 @@ export default function ManuscriptGapVisualizer({ onSaveClip }) {
     <div className="blueprint-card p-5 sm:p-6 mb-8 border border-[#222630] bg-[#13151A] rounded-xl">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#222630] pb-4 mb-5">
         <div>
-          <h3 className="text-sm font-semibold text-[#F3F4F6]">
+          <h3 className="text-base font-semibold text-[#F3F4F6]">
             Manuscript Time Gap & Copy Comparison
           </h3>
-          <p className="text-xs text-[#9CA3AF] mt-0.5">
+          <p className="text-sm text-[#9CA3AF] mt-0.5">
             Comparing the time elapsed between original writing and earliest surviving copy.
           </p>
         </div>
 
-        <div className="flex items-center bg-[#0B0C0E] p-1 rounded-lg border border-[#222630] text-xs self-start sm:self-auto">
+        <div className="flex items-center bg-[#0B0C0E] p-1 rounded-lg border border-[#222630] text-sm self-start sm:self-auto">
           <button
             onClick={() => setActiveMetric('gap')}
-            className={`px-3 py-1 rounded-md transition-all flex items-center gap-1.5 ${
+            className={`px-3 py-1.5 rounded-md transition-all flex items-center gap-1.5 ${
               activeMetric === 'gap' ? 'bg-[#1D212B] text-[#E2C08D] font-semibold' : 'text-[#9CA3AF] hover:text-[#F3F4F6]'
             }`}
           >
-            <Clock className="w-3 h-3" />
+            <Clock className="w-3.5 h-3.5" />
             <span>Time Gap</span>
           </button>
           <button
             onClick={() => setActiveMetric('copies')}
-            className={`px-3 py-1 rounded-md transition-all flex items-center gap-1.5 ${
+            className={`px-3 py-1.5 rounded-md transition-all flex items-center gap-1.5 ${
               activeMetric === 'copies' ? 'bg-[#1D212B] text-[#E2C08D] font-semibold' : 'text-[#9CA3AF] hover:text-[#F3F4F6]'
             }`}
           >
-            <FileText className="w-3 h-3" />
+            <FileText className="w-3.5 h-3.5" />
             <span>Copy Count</span>
           </button>
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-        {/* Simple Bars */}
-        <div className="lg:col-span-7 space-y-2.5">
+        {/* Bars */}
+        <div className="lg:col-span-7 space-y-3">
           {sortedData.map((item) => {
             const isNT = item.author.startsWith('New Testament');
             const isSelected = selectedAuthor.author === item.author;
@@ -64,22 +64,22 @@ export default function ManuscriptGapVisualizer({ onSaveClip }) {
               <div
                 key={item.author}
                 onClick={() => setSelectedAuthor(item)}
-                className={`p-3 rounded-lg border transition-all cursor-pointer ${
+                className={`p-3.5 rounded-lg border transition-all cursor-pointer ${
                   isSelected
-                    ? 'border-[#E2C08D]/50 bg-[#1A1D24]'
+                    ? 'border-[#E2C08D]/60 bg-[#1A1D24]'
                     : 'border-[#222630] bg-[#0B0C0E] hover:border-[#374151]'
                 }`}
               >
-                <div className="flex items-center justify-between text-xs mb-1.5">
+                <div className="flex items-center justify-between text-sm mb-2">
                   <span className={`font-medium ${isNT ? 'text-[#E2C08D]' : 'text-[#F3F4F6]'}`}>
-                    {item.author} <span className="text-[11px] text-[#6B7280]">({item.work})</span>
+                    {item.author} <span className="text-xs text-[#9CA3AF]">({item.work})</span>
                   </span>
-                  <span className={`text-xs font-semibold ${isNT ? 'text-[#E2C08D]' : 'text-[#9CA3AF]'}`}>
+                  <span className={`text-sm font-semibold ${isNT ? 'text-[#E2C08D]' : 'text-[#9CA3AF]'}`}>
                     {activeMetric === 'gap' ? `${item.timeGapYears} yr gap` : `${item.copiesCount.toLocaleString()} MSS`}
                   </span>
                 </div>
 
-                <div className="w-full bg-[#13151A] h-2 rounded-full overflow-hidden">
+                <div className="w-full bg-[#13151A] h-2.5 rounded-full overflow-hidden">
                   <div
                     className={`h-full rounded-full transition-all duration-500 ${
                       isNT ? 'bg-[#E2C08D]' : 'bg-[#374151]'
@@ -92,17 +92,17 @@ export default function ManuscriptGapVisualizer({ onSaveClip }) {
           })}
         </div>
 
-        {/* Selected Info Card */}
-        <div className="lg:col-span-5 border border-[#222630] bg-[#0B0C0E] p-4 sm:p-5 rounded-xl">
+        {/* Selected Details Card */}
+        <div className="lg:col-span-5 border border-[#222630] bg-[#0B0C0E] p-5 rounded-xl">
           <div className="text-xs text-[#E2C08D] font-semibold mb-1">
             Data Details
           </div>
 
-          <h4 className="text-sm font-semibold text-[#F3F4F6] border-b border-[#222630] pb-2 mb-3">
+          <h4 className="text-base font-semibold text-[#F3F4F6] border-b border-[#222630] pb-2 mb-3">
             {selectedAuthor.author}
           </h4>
 
-          <div className="space-y-2 text-xs text-[#9CA3AF] mb-4">
+          <div className="space-y-2.5 text-sm text-[#9CA3AF] mb-4">
             <div className="flex justify-between border-b border-[#222630]/60 pb-1">
               <span>Work:</span>
               <span className="text-[#F3F4F6]">{selectedAuthor.work}</span>
@@ -125,7 +125,7 @@ export default function ManuscriptGapVisualizer({ onSaveClip }) {
             </div>
           </div>
 
-          <p className="text-xs text-[#9CA3AF] leading-relaxed mb-4 p-3 bg-[#13151A] rounded-lg border border-[#222630]">
+          <p className="text-sm text-[#9CA3AF] leading-relaxed mb-4 p-3.5 bg-[#13151A] rounded-lg border border-[#222630]">
             {selectedAuthor.notes}
           </p>
 
@@ -138,9 +138,9 @@ export default function ManuscriptGapVisualizer({ onSaveClip }) {
                   category: 'Manuscripts'
                 })
               }
-              className="w-full py-2 border border-[#222630] bg-[#13151A] hover:border-[#E2C08D] hover:text-[#E2C08D] text-[#F3F4F6] text-xs font-medium rounded-lg transition-all flex items-center justify-center gap-1.5"
+              className="w-full py-2.5 border border-[#222630] bg-[#13151A] hover:border-[#E2C08D] hover:text-[#E2C08D] text-[#F3F4F6] text-sm font-medium rounded-lg transition-all flex items-center justify-center gap-2"
             >
-              <Bookmark className="w-3.5 h-3.5 text-[#E2C08D]" />
+              <Bookmark className="w-4 h-4 text-[#E2C08D]" />
               <span>Save to Field Drawer</span>
             </button>
           )}

@@ -11,10 +11,10 @@ export default function Header({ searchFilter, setSearchFilter, savedClipsCount,
             ΑΩ
           </div>
           <div>
-            <h1 className="text-base font-semibold text-[#F3F4F6] tracking-tight">
+            <h1 className="text-base sm:text-lg font-semibold text-[#F3F4F6] tracking-tight">
               Apologetics <span className="text-[#E2C08D] font-medium">101</span>
             </h1>
-            <p className="text-xs text-[#6B7280]">
+            <p className="text-xs text-[#9CA3AF]">
               Digital Museum & Field Guide
             </p>
           </div>
@@ -23,18 +23,18 @@ export default function Header({ searchFilter, setSearchFilter, savedClipsCount,
         {/* Search & Drawer button */}
         <div className="flex items-center gap-3">
           <div className="relative w-40 sm:w-60">
-            <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-[#6B7280]" />
+            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-[#9CA3AF]" />
             <input
               type="text"
               value={searchFilter}
               onChange={(e) => setSearchFilter(e.target.value)}
               placeholder="Search..."
-              className="w-full bg-[#13151A] border border-[#222630] focus:border-[#E2C08D] pl-8 pr-3 py-1.5 text-xs text-[#F3F4F6] placeholder-[#6B7280] focus:outline-none transition-colors rounded-lg"
+              className="w-full bg-[#13151A] border border-[#222630] focus:border-[#E2C08D] pl-9 pr-3 py-1.5 text-sm text-[#F3F4F6] placeholder-[#9CA3AF] focus:outline-none transition-colors rounded-lg"
             />
             {searchFilter && (
               <button
                 onClick={() => setSearchFilter('')}
-                className="absolute right-2 top-1/2 -translate-y-1/2 text-xs text-[#6B7280] hover:text-[#F3F4F6]"
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-sm text-[#9CA3AF] hover:text-[#F3F4F6]"
               >
                 ✕
               </button>
@@ -43,11 +43,11 @@ export default function Header({ searchFilter, setSearchFilter, savedClipsCount,
 
           <button
             onClick={onOpenDrawer}
-            className="flex items-center gap-2 px-3 py-1.5 border border-[#222630] bg-[#13151A] hover:border-[#E2C08D] text-xs text-[#F3F4F6] transition-all rounded-lg"
+            className="flex items-center gap-2 px-3.5 py-1.5 border border-[#222630] bg-[#13151A] hover:border-[#E2C08D] text-sm text-[#F3F4F6] transition-all rounded-lg"
           >
-            <Bookmark className="w-3.5 h-3.5 text-[#E2C08D]" />
+            <Bookmark className="w-4 h-4 text-[#E2C08D]" />
             <span className="hidden sm:inline font-medium">Field Drawer</span>
-            <span className="bg-[#1D212B] text-[#E2C08D] px-1.5 py-0.5 text-[10px] rounded-md font-semibold">
+            <span className="bg-[#1D212B] text-[#E2C08D] px-2 py-0.5 text-xs rounded-md font-semibold">
               {savedClipsCount}
             </span>
           </button>

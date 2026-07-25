@@ -19,7 +19,7 @@ export default function ModuleNav({ activeModule, setActiveModule }) {
               <button
                 key={mod.id}
                 onClick={() => setActiveModule(mod.id)}
-                className={`px-3.5 py-1.5 rounded-full transition-all text-xs whitespace-nowrap font-medium ${
+                className={`px-4 py-2 rounded-full transition-all text-sm whitespace-nowrap font-medium ${
                   isActive
                     ? 'bg-[#E2C08D] text-[#0B0C0E] shadow-sm font-semibold'
                     : 'text-[#9CA3AF] hover:text-[#F3F4F6] hover:bg-[#13151A]'

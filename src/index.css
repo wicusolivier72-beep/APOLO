@@ -8,6 +8,8 @@
     color: #F3F4F6;
     font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
     letter-spacing: -0.01em;
+    font-size: 0.9375rem; /* 15px default body font for improved readability */
+    line-height: 1.6;
   }
 }
 
@@ -27,14 +29,14 @@
   background: #4B5563;
 }
 
-/* Subtle Pill Badge */
+/* Readable Pill Badge */
 .subtle-badge {
-  font-size: 0.725rem;
+  font-size: 0.8125rem; /* 13px */
   font-weight: 500;
   color: #E2C08D;
   background-color: rgba(226, 192, 141, 0.08);
   border: 1px solid rgba(226, 192, 141, 0.2);
-  padding: 0.2rem 0.6rem;
+  padding: 0.25rem 0.7rem;
   border-radius: 9999px;
   display: inline-flex;
   align-items: center;
