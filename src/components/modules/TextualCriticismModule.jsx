@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { manuscriptsList } from '../../data/manuscriptsData';
 import ManuscriptGapVisualizer from '../interactive/ManuscriptGapVisualizer';
 import TextualVariantBreakdown from '../interactive/TextualVariantBreakdown';
-import { Calendar, MapPin, BookOpen, ChevronDown, ChevronUp, BookmarkPlus } from 'lucide-react';
+import { Calendar, MapPin, ChevronDown, ChevronUp, Bookmark } from 'lucide-react';
 
 export default function TextualCriticismModule({ searchFilter, onSaveClip }) {
   const [expandedCardId, setExpandedCardId] = useState(null);
@@ -18,78 +18,71 @@ export default function TextualCriticismModule({ searchFilter, onSaveClip }) {
   });
 
   return (
-    <div className="space-y-8 font-mono">
-      {/* Module Header */}
-      <div className="border-b border-[#27272A] pb-4">
-        <span className="mono-pill">MODULE 01</span>
-        <h2 className="text-xl font-bold text-[#F4F4F5] tracking-wide mt-1.5 uppercase">
-          Textual Criticism & Manuscript Record
+    <div className="space-y-8">
+      {/* Module Title */}
+      <div className="border-b border-[#222630] pb-4">
+        <span className="subtle-badge">Manuscript Preservation & Variants</span>
+        <h2 className="text-xl font-semibold text-[#F3F4F6] mt-2">
+          Textual Criticism & Manuscripts
         </h2>
-        <p className="text-xs text-[#71717A] mt-1 max-w-2xl leading-relaxed">
-          Primary source evidence on papyri, uncial codices, variant classification, and copy fidelity across 5,800+ Greek manuscripts.
+        <p className="text-xs text-[#9CA3AF] mt-1 max-w-2xl leading-relaxed">
+          Primary evidence on papyri, uncial codices, variant classification, and manuscript transmission.
         </p>
       </div>
 
-      {/* Interactive Visualizers */}
+      {/* Visualizers */}
       <ManuscriptGapVisualizer onSaveClip={onSaveClip} />
       <TextualVariantBreakdown onSaveClip={onSaveClip} />
 
-      {/* Manuscript Catalog */}
+      {/* Catalog */}
       <div>
-        <div className="flex items-center justify-between border-b border-[#27272A] pb-2 mb-4">
-          <h3 className="text-xs font-bold text-[#F4F4F5] uppercase tracking-wider">
-            PRIMARY MANUSCRIPT CATALOG ({filteredMSS.length})
-          </h3>
-        </div>
+        <h3 className="text-xs font-semibold text-[#F3F4F6] uppercase tracking-wider mb-4">
+          Manuscript Catalog ({filteredMSS.length})
+        </h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {filteredMSS.map((mss) => {
             const isExpanded = expandedCardId === mss.id;
 
             return (
-              <div key={mss.id} className="blueprint-card p-5 border border-[#27272A] bg-[#121215] rounded flex flex-col justify-between">
+              <div key={mss.id} className="blueprint-card p-5 border border-[#222630] bg-[#13151A] rounded-xl flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="mono-pill text-[10px]">{mss.category}</span>
-                    <span className="text-[10px] text-[#71717A]">{mss.id}</span>
+                    <span className="subtle-badge">{mss.category.replace(/\[|\]/g, '')}</span>
+                    <span className="text-xs text-[#6B7280]">{mss.id}</span>
                   </div>
 
-                  <h4 className="text-base font-bold text-[#F4F4F5] mb-2">{mss.designation}</h4>
+                  <h4 className="text-base font-semibold text-[#F3F4F6] mb-2">{mss.designation}</h4>
 
-                  <div className="space-y-1 text-xs text-[#71717A] mb-3">
+                  <div className="space-y-1 text-xs text-[#9CA3AF] mb-3">
                     <div className="flex items-center gap-2">
                       <Calendar className="w-3.5 h-3.5 text-[#E2C08D]" />
-                      <span>Date: <strong className="text-[#F4F4F5]">{mss.date}</strong></span>
+                      <span>Date: <strong className="text-[#F3F4F6]">{mss.date}</strong></span>
                     </div>
                     <div className="flex items-center gap-2">
                       <MapPin className="w-3.5 h-3.5 text-[#E2C08D]" />
-                      <span>Repository: <strong className="text-[#F4F4F5]">{mss.location}</strong></span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <BookOpen className="w-3.5 h-3.5 text-[#E2C08D]" />
-                      <span>Contents: <strong className="text-[#F4F4F5]">{mss.contents}</strong></span>
+                      <span>Location: <strong className="text-[#F3F4F6]">{mss.location}</strong></span>
                     </div>
                   </div>
 
-                  <p className="text-xs text-[#A1A1AA] leading-relaxed mb-3">{mss.significance}</p>
+                  <p className="text-xs text-[#9CA3AF] leading-relaxed mb-3">{mss.significance}</p>
 
-                  {/* Expandable Syllogism Accordion */}
                   {isExpanded && (
-                    <div className="mt-3 p-3 bg-[#09090B] border border-[#27272A] rounded text-xs space-y-1.5 animate-fadeIn">
-                      <div className="text-[10px] text-[#E2C08D] font-bold">[LOGICAL SYLLOGISM]</div>
-                      <div className="text-[#71717A]">P1: {mss.syllogism.p1}</div>
-                      <div className="text-[#71717A]">P2: {mss.syllogism.p2}</div>
-                      <div className="text-[#F4F4F5] font-semibold pt-1 border-t border-[#27272A]">
+                    <div className="mt-3 p-3 bg-[#0B0C0E] border border-[#222630] rounded-lg text-xs space-y-1.5">
+                      <div className="text-xs text-[#E2C08D] font-medium">Logical Syllogism</div>
+                      <div className="text-[#9CA3AF]">P1: {mss.syllogism.p1}</div>
+                      <div className="text-[#9CA3AF]">P2: {mss.syllogism.p2}</div>
+                      <div className="text-[#F3F4F6] font-medium pt-1 border-t border-[#222630]">
                         Conclusion: {mss.syllogism.c}
                       </div>
                     </div>
                   )}
                 </div>
 
-                <div className="pt-3 border-t border-[#27272A] mt-3 flex items-center justify-between text-xs">
+                <div className="pt-3 border-t border-[#222630] mt-3 flex items-center justify-between text-xs">
                   <button
                     onClick={() => setExpandedCardId(isExpanded ? null : mss.id)}
-                    className="flex items-center gap-1 text-[#E2C08D] hover:underline text-xs"
+                    className="flex items-center gap-1 text-[#E2C08D] hover:underline font-medium"
                   >
                     {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
                     <span>{isExpanded ? 'Hide Syllogism' : 'View Syllogism'}</span>
@@ -101,13 +94,13 @@ export default function TextualCriticismModule({ searchFilter, onSaveClip }) {
                         onSaveClip({
                           title: mss.designation,
                           snippet: `${mss.designation} (${mss.date}): ${mss.significance}`,
-                          category: '[MANUSCRIPT]'
+                          category: 'Manuscript'
                         })
                       }
-                      className="flex items-center gap-1 text-[#71717A] hover:text-[#F4F4F5] text-xs"
+                      className="flex items-center gap-1 text-[#9CA3AF] hover:text-[#F3F4F6]"
                     >
-                      <BookmarkPlus className="w-3.5 h-3.5" />
-                      <span>Clip</span>
+                      <Bookmark className="w-3.5 h-3.5" />
+                      <span>Save</span>
                     </button>
                   )}
                 </div>

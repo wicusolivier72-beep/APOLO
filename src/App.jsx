@@ -45,7 +45,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#09090B] text-[#F4F4F5] flex flex-col font-sans selection:bg-[#E2C08D] selection:text-[#09090B] antialiased">
+    <div className="min-h-screen bg-[#0B0C0E] text-[#F3F4F6] flex flex-col font-sans selection:bg-[#E2C08D] selection:text-[#0B0C0E] antialiased">
       {/* Header */}
       <Header
         searchFilter={searchFilter}
@@ -58,20 +58,20 @@ export default function App() {
       <ModuleNav activeModule={activeModule} setActiveModule={setActiveModule} />
 
       {/* Clean Hero Header */}
-      <section className="border-b border-[#27272A] bg-[#09090B] py-10 px-4 md:px-6">
-        <div className="max-w-6xl mx-auto space-y-2 font-mono">
-          <span className="mono-pill">ACADEMIC // TRANSPARENT // MYTH-BUSTING</span>
-          <h2 className="text-2xl md:text-3xl font-extrabold text-[#F4F4F5] tracking-tight uppercase">
-            APOLOGETICS 101 FIELD BLUEPRINT
+      <section className="border-b border-[#222630] bg-[#0B0C0E] py-8 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto space-y-1.5">
+          <span className="subtle-badge">Academic • Precise • Transparent</span>
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#F3F4F6] tracking-tight">
+            Apologetics 101 Field Guide
           </h2>
-          <p className="text-xs text-[#71717A] max-w-2xl leading-relaxed">
-            A fast, structured digital museum and field manual for Christian apologetics and biblical reliability. Rooted in primary manuscripts, verified archaeological inscriptions, early creedal timing, and logical self-refuting analysis.
+          <p className="text-xs sm:text-sm text-[#9CA3AF] max-w-2xl leading-relaxed">
+            An interactive digital museum for manuscript evidence, verified archaeological inscriptions, early creedal timelines, and tactical conversation guides.
           </p>
         </div>
       </section>
 
       {/* Main Module Content */}
-      <main className="flex-1 max-w-6xl w-full mx-auto px-4 md:px-6 py-8">
+      <main className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-8">
         {activeModule === 'module-1' && (
           <TextualCriticismModule searchFilter={searchFilter} onSaveClip={handleSaveClip} />
         )}
@@ -90,16 +90,16 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-[#27272A] bg-[#121215] py-6 px-4 md:px-6 font-mono text-xs text-[#71717A]">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <footer className="border-t border-[#222630] bg-[#13151A] py-6 px-4 sm:px-6 text-xs text-[#9CA3AF]">
+        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#E2C08D]"></span>
-            <span className="text-[#F4F4F5] font-bold">APOLOGETICS 101</span>
-            <span>— DIGITAL MUSEUM & FIELD MANUAL</span>
+            <span className="text-[#F3F4F6] font-semibold">Apologetics 101</span>
+            <span>— Digital Museum & Field Guide</span>
           </div>
 
-          <div className="text-[11px] text-[#71717A]">
-            PRIMARY SOURCES FIRST • ZERO FLUFF
+          <div className="text-xs text-[#6B7280]">
+            Primary Sources First
           </div>
         </div>
       </footer>

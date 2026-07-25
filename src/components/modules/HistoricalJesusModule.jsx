@@ -1,95 +1,92 @@
 import React from 'react';
 import { creedTimelineSteps, nonChristianHistorians } from '../../data/creedsJesusData';
 import MinimalFactsMatrix from '../interactive/MinimalFactsMatrix';
-import { BookmarkPlus } from 'lucide-react';
+import { Bookmark } from 'lucide-react';
 
 export default function HistoricalJesusModule({ searchFilter, onSaveClip }) {
   return (
-    <div className="space-y-8 font-mono">
+    <div className="space-y-8">
       {/* Module Header */}
-      <div className="border-b border-[#27272A] pb-4">
-        <span className="mono-pill">MODULE 03</span>
-        <h2 className="text-xl font-bold text-[#F4F4F5] tracking-wide mt-1.5 uppercase">
-          The Historical Jesus & Early Creeds
+      <div className="border-b border-[#222630] pb-4">
+        <span className="subtle-badge">Creeds & Witnesses</span>
+        <h2 className="text-xl font-semibold text-[#F3F4F6] mt-2">
+          Historical Jesus & Early Creeds
         </h2>
-        <p className="text-xs text-[#71717A] mt-1 max-w-2xl leading-relaxed">
-          Data-driven historical analysis focusing on early eyewitness testimony, 1 Corinthians 15 creedal chronology, non-Christian ancient historians, and the Minimal Facts matrix.
+        <p className="text-xs text-[#9CA3AF] mt-1 max-w-2xl leading-relaxed">
+          Eyewitness creedal chronology (1 Corinthians 15), non-Christian Roman/Jewish historians, and Minimal Facts.
         </p>
       </div>
 
-      {/* 1 Cor 15 Creed Timeline */}
-      <div className="blueprint-card p-5 md:p-6 border border-[#27272A] bg-[#121215] rounded">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#27272A] pb-3 mb-6">
+      {/* 1 Cor 15 Timeline */}
+      <div className="blueprint-card p-5 sm:p-6 border border-[#222630] bg-[#13151A] rounded-xl">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#222630] pb-3 mb-5">
           <div>
-            <span className="mono-pill text-[10px]">CREED CHRONOLOGY</span>
-            <h3 className="text-base font-bold text-[#F4F4F5] mt-1">1 Corinthians 15:3–8 Creed Timeline</h3>
+            <h3 className="text-sm font-semibold text-[#F3F4F6]">1 Corinthians 15:3–8 Creed Timeline</h3>
           </div>
-          <span className="text-xs text-[#71717A] mt-1 sm:mt-0">Early Jerusalem Oral Tradition (c. 33 AD)</span>
+          <span className="text-xs text-[#9CA3AF] mt-1 sm:mt-0">Early Jerusalem Oral Tradition (c. 33 AD)</span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
           {creedTimelineSteps.map((step, idx) => (
-            <div key={idx} className="border border-[#27272A] bg-[#09090B] p-4 rounded flex flex-col justify-between">
+            <div key={idx} className="border border-[#222630] bg-[#0B0C0E] p-4 rounded-xl flex flex-col justify-between">
               <div>
-                <span className="text-[10px] text-[#E2C08D] font-bold block mb-1">{step.year} — {step.phase}</span>
-                <h4 className="text-sm font-bold text-[#F4F4F5] mb-2">{step.title}</h4>
-                <p className="text-xs text-[#71717A] leading-relaxed">{step.description}</p>
+                <span className="text-xs text-[#E2C08D] font-semibold block mb-1">{step.year}</span>
+                <h4 className="text-sm font-semibold text-[#F3F4F6] mb-1.5">{step.title}</h4>
+                <p className="text-xs text-[#9CA3AF] leading-relaxed">{step.description}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-5 p-3.5 bg-[#09090B] border border-[#27272A] rounded text-xs text-[#A1A1AA] leading-relaxed">
-          <span className="text-[#E2C08D] font-bold">TAKEAWAY: </span>
+        <div className="mt-4 p-3 bg-[#0B0C0E] border border-[#222630] rounded-lg text-xs text-[#9CA3AF] leading-relaxed">
+          <span className="text-[#E2C08D] font-medium">Historical Takeaway: </span>
           Paul explicitly uses rabbinic technical terms ('delivered' / 'received') for receiving the resurrection creed in Jerusalem within 3–5 years of Jesus' death. Resurrection claims did not take centuries of legend to form.
         </div>
       </div>
 
-      {/* Minimal Facts Matrix */}
+      {/* Minimal Facts */}
       <MinimalFactsMatrix onSaveClip={onSaveClip} />
 
-      {/* Non-Christian Historians Catalog */}
+      {/* Non-Christian Historians */}
       <div>
-        <div className="flex items-center justify-between border-b border-[#27272A] pb-2 mb-4">
-          <h3 className="text-xs font-bold text-[#F4F4F5] uppercase tracking-wider">
-            NON-CHRISTIAN ANCIENT WITNESSES ({nonChristianHistorians.length})
-          </h3>
-        </div>
+        <h3 className="text-xs font-semibold text-[#F3F4F6] uppercase tracking-wider mb-4">
+          Non-Christian Ancient Witnesses ({nonChristianHistorians.length})
+        </h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {nonChristianHistorians.map((h, i) => (
-            <div key={i} className="blueprint-card p-5 border border-[#27272A] bg-[#121215] rounded flex flex-col justify-between">
+            <div key={i} className="blueprint-card p-5 border border-[#222630] bg-[#13151A] rounded-xl flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="mono-pill text-[10px]">EXTRA-BIBLICAL</span>
-                  <span className="text-[10px] text-[#71717A]">{h.historian.split(' ')[0]}</span>
+                  <span className="subtle-badge">Extra-Biblical</span>
+                  <span className="text-xs text-[#6B7280]">{h.historian.split(' ')[0]}</span>
                 </div>
 
-                <h4 className="text-base font-bold text-[#F4F4F5] mb-0.5">{h.historian}</h4>
-                <div className="text-xs text-[#E2C08D] font-semibold mb-3">{h.work}</div>
+                <h4 className="text-base font-semibold text-[#F3F4F6] mb-0.5">{h.historian}</h4>
+                <div className="text-xs text-[#E2C08D] font-medium mb-3">{h.work}</div>
 
-                <blockquote className="p-3 bg-[#09090B] border-l-2 border-l-[#E2C08D] text-xs text-[#F4F4F5] italic mb-3 leading-relaxed rounded-r">
+                <blockquote className="p-3 bg-[#0B0C0E] border-l-2 border-l-[#E2C08D] text-xs text-[#F3F4F6] italic mb-3 leading-relaxed rounded-r-lg">
                   "{h.quote}"
                 </blockquote>
 
-                <p className="text-xs text-[#71717A] leading-relaxed">{h.significance}</p>
+                <p className="text-xs text-[#9CA3AF] leading-relaxed">{h.significance}</p>
               </div>
 
-              <div className="pt-3 border-t border-[#27272A] mt-3 flex items-center justify-between text-xs">
-                <span className="text-[10px] text-[#71717A]">HISTORICAL WITNESS</span>
+              <div className="pt-3 border-t border-[#222630] mt-3 flex items-center justify-between text-xs">
+                <span className="text-xs text-[#6B7280]">Historical Witness</span>
                 {onSaveClip && (
                   <button
                     onClick={() =>
                       onSaveClip({
                         title: h.historian,
                         snippet: `${h.historian} (${h.work}): "${h.quote}"`,
-                        category: '[HISTORICAL WITNESS]'
+                        category: 'Witness'
                       })
                     }
-                    className="flex items-center gap-1 text-[#71717A] hover:text-[#F4F4F5] text-xs"
+                    className="flex items-center gap-1 text-[#9CA3AF] hover:text-[#F3F4F6]"
                   >
-                    <BookmarkPlus className="w-3.5 h-3.5" />
-                    <span>Clip</span>
+                    <Bookmark className="w-3.5 h-3.5" />
+                    <span>Save</span>
                   </button>
                 )}
               </div>

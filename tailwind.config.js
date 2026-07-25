@@ -7,19 +7,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        'bg-primary': '#09090B',
-        'bg-surface': '#121215',
-        'bg-surface-hover': '#1A1A1E',
-        'text-primary': '#F4F4F5',
-        'text-secondary': '#A1A1AA',
-        'text-muted': '#71717A',
-        'border-grid': '#27272A',
-        'accent-warm': '#E2C08D',
+        'bg-primary': '#0B0C0E',
+        'bg-card': '#13151A',
+        'bg-card-hover': '#181A20',
+        'text-primary': '#F3F4F6',
+        'text-secondary': '#9CA3AF',
+        'text-muted': '#6B7280',
+        'border-subtle': '#222630',
         'accent-gold': '#D4AF37',
+        'accent-warm': '#E2C08D',
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'monospace'],
+        sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+        mono: ['Inter', 'sans-serif'], // Replacing blocky monospace with clean Inter for code/tags
       },
     },
   },

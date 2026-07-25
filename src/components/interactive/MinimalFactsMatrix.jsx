@@ -1,46 +1,33 @@
 import React, { useState } from 'react';
 import { minimalFactsData } from '../../data/creedsJesusData';
-import { Check, X, BookmarkPlus } from 'lucide-react';
+import { Check, X, Bookmark } from 'lucide-react';
 
 export default function MinimalFactsMatrix({ onSaveClip }) {
   const [selectedHypothesis, setSelectedHypothesis] = useState(minimalFactsData.hypotheses[4]);
 
   return (
-    <div className="blueprint-card p-5 md:p-6 mb-8 border border-[#27272A] bg-[#121215]">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#27272A] pb-4 mb-6">
-        <div>
-          <span className="mono-pill mb-1">HISTORICAL MATRIX SCHEMATIC</span>
-          <h3 className="text-base font-bold text-[#F4F4F5] tracking-wide mt-1">
-            The Minimal Facts Resurrection Matrix
-          </h3>
-          <p className="text-xs text-[#71717A] mt-0.5">
-            5 facts supported by &gt;90% of critical historical scholars compared against naturalistic hypotheses.
-          </p>
-        </div>
+    <div className="blueprint-card p-5 sm:p-6 mb-8 border border-[#222630] bg-[#13151A] rounded-xl">
+      <div className="border-b border-[#222630] pb-4 mb-5">
+        <h3 className="text-sm font-semibold text-[#F3F4F6]">
+          The Minimal Facts Resurrection Matrix
+        </h3>
+        <p className="text-xs text-[#9CA3AF] mt-0.5">
+          Comparing naturalistic theories against 5 facts accepted by &gt;90% of critical scholars.
+        </p>
       </div>
 
-      {/* Facts Bar */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-2 mb-6 font-mono text-xs">
-        {minimalFactsData.facts.map((fact) => (
-          <div key={fact.id} className="p-2.5 border border-[#27272A] bg-[#09090B] rounded">
-            <div className="text-[10px] text-[#E2C08D] font-bold">{fact.code}</div>
-            <div className="font-semibold text-[#F4F4F5] truncate mt-0.5">{fact.label}</div>
-          </div>
-        ))}
-      </div>
-
-      {/* Matrix Table */}
-      <div className="overflow-x-auto border border-[#27272A] bg-[#09090B] font-mono rounded mb-6">
-        <table className="w-full text-left text-xs border-collapse">
+      {/* Table */}
+      <div className="overflow-x-auto border border-[#222630] bg-[#0B0C0E] rounded-xl mb-5 text-xs">
+        <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="border-b border-[#27272A] bg-[#121215] text-[#71717A]">
-              <th className="p-3 border-r border-[#27272A]">HYPOTHESIS</th>
+            <tr className="border-b border-[#222630] bg-[#13151A] text-[#9CA3AF]">
+              <th className="p-3 border-r border-[#222630]">Theory</th>
               {minimalFactsData.facts.map((f) => (
-                <th key={f.id} className="p-3 text-center border-r border-[#27272A] w-20">
+                <th key={f.id} className="p-3 text-center border-r border-[#222630] w-16">
                   {f.code}
                 </th>
               ))}
-              <th className="p-3 text-right">EXPLANATORY SCORE</th>
+              <th className="p-3 text-right">Score</th>
             </tr>
           </thead>
           <tbody>
@@ -53,15 +40,15 @@ export default function MinimalFactsMatrix({ onSaveClip }) {
                 <tr
                   key={idx}
                   onClick={() => setSelectedHypothesis(h)}
-                  className={`border-b border-[#27272A] transition-colors cursor-pointer ${
-                    isSelected ? 'bg-[#1E1E24]' : 'hover:bg-[#121215]'
+                  className={`border-b border-[#222630] transition-colors cursor-pointer ${
+                    isSelected ? 'bg-[#1D212B]' : 'hover:bg-[#13151A]'
                   }`}
                 >
-                  <td className="p-3 font-semibold border-r border-[#27272A] text-[#F4F4F5] flex items-center justify-between">
+                  <td className="p-3 font-medium border-r border-[#222630] text-[#F3F4F6] flex items-center justify-between">
                     <span>{h.name}</span>
                     {isResurrection && (
-                      <span className="text-[9px] bg-[#E2C08D]/10 text-[#E2C08D] border border-[#E2C08D]/40 px-1.5 py-0.5 rounded">
-                        BEST FIT
+                      <span className="text-[10px] bg-[#E2C08D]/10 text-[#E2C08D] border border-[#E2C08D]/30 px-1.5 py-0.5 rounded-full font-medium">
+                        Best Fit
                       </span>
                     )}
                   </td>
@@ -69,13 +56,13 @@ export default function MinimalFactsMatrix({ onSaveClip }) {
                   {minimalFactsData.facts.map((f) => {
                     const passes = h.scores[f.id];
                     return (
-                      <td key={f.id} className="p-3 text-center border-r border-[#27272A]">
+                      <td key={f.id} className="p-3 text-center border-r border-[#222630]">
                         {passes ? (
                           <span className="inline-flex items-center justify-center w-4 h-4 rounded bg-[#E2C08D]/20 text-[#E2C08D]">
                             <Check className="w-3 h-3" />
                           </span>
                         ) : (
-                          <span className="inline-flex items-center justify-center w-4 h-4 rounded bg-[#27272A] text-[#71717A]">
+                          <span className="inline-flex items-center justify-center w-4 h-4 rounded bg-[#222630] text-[#6B7280]">
                             <X className="w-3 h-3" />
                           </span>
                         )}
@@ -83,11 +70,11 @@ export default function MinimalFactsMatrix({ onSaveClip }) {
                     );
                   })}
 
-                  <td className="p-3 text-right font-semibold">
+                  <td className="p-3 text-right font-medium">
                     {allPassed ? (
-                      <span className="text-[#E2C08D]">5/5 (100%)</span>
+                      <span className="text-[#E2C08D]">5/5</span>
                     ) : (
-                      <span className="text-[#71717A]">
+                      <span className="text-[#9CA3AF]">
                         {Object.values(h.scores).filter(Boolean).length}/5
                       </span>
                     )}
@@ -99,14 +86,13 @@ export default function MinimalFactsMatrix({ onSaveClip }) {
         </table>
       </div>
 
-      {/* Selected Theory Critique Box */}
-      <div className="border border-[#27272A] bg-[#09090B] p-4 rounded font-mono">
-        <div className="flex items-center justify-between border-b border-[#27272A] pb-2 mb-2">
-          <span className="text-[10px] text-[#E2C08D] font-bold uppercase">[EXPLANATORY EVALUATION]</span>
-          <span className="text-xs font-bold text-[#F4F4F5]">{selectedHypothesis.name}</span>
+      <div className="border border-[#222630] bg-[#0B0C0E] p-4 rounded-xl text-xs">
+        <div className="flex items-center justify-between border-b border-[#222630] pb-2 mb-2">
+          <span className="text-xs font-semibold text-[#E2C08D]">Evaluation</span>
+          <span className="font-semibold text-[#F3F4F6]">{selectedHypothesis.name}</span>
         </div>
 
-        <p className="text-xs text-[#A1A1AA] leading-relaxed mb-3">{selectedHypothesis.critique}</p>
+        <p className="text-xs text-[#9CA3AF] leading-relaxed mb-3">{selectedHypothesis.critique}</p>
 
         {onSaveClip && (
           <button
@@ -114,13 +100,13 @@ export default function MinimalFactsMatrix({ onSaveClip }) {
               onSaveClip({
                 title: `Minimal Facts: ${selectedHypothesis.name}`,
                 snippet: `${selectedHypothesis.name}: ${selectedHypothesis.critique}`,
-                category: '[MINIMAL FACTS]'
+                category: 'Minimal Facts'
               })
             }
-            className="py-1.5 px-3 border border-[#27272A] bg-[#121215] hover:border-[#E2C08D] hover:text-[#E2C08D] text-[#F4F4F5] text-xs font-mono rounded transition-all flex items-center justify-center gap-1.5"
+            className="py-1.5 px-3 border border-[#222630] bg-[#13151A] hover:border-[#E2C08D] hover:text-[#E2C08D] text-[#F3F4F6] text-xs rounded-lg transition-all flex items-center justify-center gap-1.5"
           >
-            <BookmarkPlus className="w-3.5 h-3.5 text-[#E2C08D]" />
-            <span>CLIP ANALYSIS</span>
+            <Bookmark className="w-3.5 h-3.5 text-[#E2C08D]" />
+            <span>Save to Drawer</span>
           </button>
         )}
       </div>

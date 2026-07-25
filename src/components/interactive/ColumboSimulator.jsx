@@ -1,124 +1,115 @@
 import React, { useState } from 'react';
 import { columboQuestions, selfRefutingStatements } from '../../data/tacticsData';
-import { BookmarkPlus, Zap } from 'lucide-react';
+import { Bookmark, Sparkles } from 'lucide-react';
 
 export default function ColumboSimulator({ onSaveClip }) {
   const [activeTab, setActiveTab] = useState('columbo');
   const [selectedStatement, setSelectedStatement] = useState(selfRefutingStatements[0]);
 
   return (
-    <div className="blueprint-card p-5 md:p-6 mb-8 border border-[#27272A] bg-[#121215]">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#27272A] pb-4 mb-6">
+    <div className="blueprint-card p-5 sm:p-6 mb-8 border border-[#222630] bg-[#13151A] rounded-xl">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#222630] pb-4 mb-5">
         <div>
-          <span className="mono-pill mb-1">DIALOGUE FIELD TRAINER</span>
-          <h3 className="text-base font-bold text-[#F4F4F5] tracking-wide mt-1">
-            Columbo Tactics & Self-Refuting Cheat Sheet
+          <h3 className="text-sm font-semibold text-[#F3F4F6]">
+            Columbo Tactics & Self-Refuting Guide
           </h3>
-          <p className="text-xs text-[#71717A] mt-0.5">
-            Practical frameworks for asking questions, shifting the burden of proof, and neutralizing self-defeating claims.
+          <p className="text-xs text-[#9CA3AF] mt-0.5">
+            Practical frameworks for asking questions and neutralizing self-defeating claims.
           </p>
         </div>
 
-        <div className="flex items-center border border-[#27272A] bg-[#09090B] p-1 rounded font-mono text-xs self-start sm:self-auto">
+        <div className="flex items-center bg-[#0B0C0E] p-1 rounded-lg border border-[#222630] text-xs self-start sm:self-auto">
           <button
             onClick={() => setActiveTab('columbo')}
-            className={`px-3 py-1 rounded transition-colors ${
-              activeTab === 'columbo' ? 'bg-[#1E1E24] text-[#E2C08D] font-bold' : 'text-[#71717A] hover:text-[#F4F4F5]'
+            className={`px-3 py-1 rounded-md transition-all ${
+              activeTab === 'columbo' ? 'bg-[#1D212B] text-[#E2C08D] font-medium' : 'text-[#9CA3AF] hover:text-[#F3F4F6]'
             }`}
           >
-            COLUMBO PLAN
+            Columbo Plan
           </button>
           <button
             onClick={() => setActiveTab('refuting')}
-            className={`px-3 py-1 rounded transition-colors ${
-              activeTab === 'refuting' ? 'bg-[#1E1E24] text-[#E2C08D] font-bold' : 'text-[#71717A] hover:text-[#F4F4F5]'
+            className={`px-3 py-1 rounded-md transition-all ${
+              activeTab === 'refuting' ? 'bg-[#1D212B] text-[#E2C08D] font-medium' : 'text-[#9CA3AF] hover:text-[#F3F4F6]'
             }`}
           >
-            SELF-REFUTING CHEAT SHEET
+            Self-Refuting Claims
           </button>
         </div>
       </div>
 
       {activeTab === 'columbo' ? (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {columboQuestions.map((q) => (
-            <div key={q.step} className="border border-[#27272A] bg-[#09090B] p-4 rounded flex flex-col justify-between">
+            <div key={q.step} className="border border-[#222630] bg-[#0B0C0E] p-4 rounded-xl flex flex-col justify-between text-xs">
               <div>
-                <div className="flex items-center justify-between border-b border-[#27272A] pb-2 mb-3">
-                  <span className="text-[10px] text-[#E2C08D] font-bold">STEP {q.step}</span>
-                  <span className="text-xs text-[#F4F4F5] font-bold">{q.title}</span>
+                <div className="flex items-center justify-between border-b border-[#222630] pb-2 mb-3">
+                  <span className="text-xs text-[#E2C08D] font-semibold">Step {q.step}</span>
+                  <span className="text-xs text-[#F3F4F6] font-medium">{q.title}</span>
                 </div>
 
-                <div className="p-3 bg-[#121215] border border-[#27272A] rounded mb-3 text-xs text-[#E2C08D] font-semibold">
+                <div className="p-3 bg-[#13151A] border border-[#222630] rounded-lg mb-3 text-xs text-[#E2C08D] font-medium">
                   "{q.questionText}"
                 </div>
 
-                <p className="text-xs text-[#71717A] mb-3 leading-relaxed">{q.purpose}</p>
+                <p className="text-xs text-[#9CA3AF] mb-3 leading-relaxed">{q.purpose}</p>
 
-                <div className="p-2.5 bg-[#121215] border border-[#27272A] rounded text-xs space-y-1">
-                  <div className="text-[9px] text-[#71717A] uppercase">EX. SKEPTIC CLAIM:</div>
-                  <div className="text-[#A1A1AA] italic">{q.exampleClaim}</div>
-                  <div className="text-[9px] text-[#E2C08D] uppercase mt-2">RECOMMENDED QUESTION:</div>
-                  <div className="text-[#F4F4F5] font-semibold">{q.recommendedResponse}</div>
+                <div className="p-2.5 bg-[#13151A] border border-[#222630] rounded-lg text-xs space-y-1">
+                  <div className="text-[11px] text-[#9CA3AF]">Skeptic Claim:</div>
+                  <div className="text-[#F3F4F6] italic">{q.exampleClaim}</div>
+                  <div className="text-[11px] text-[#E2C08D] mt-2">Recommended Response:</div>
+                  <div className="text-[#F3F4F6] font-medium">{q.recommendedResponse}</div>
                 </div>
-              </div>
-
-              <div className="mt-4 pt-2 border-t border-[#27272A] text-[10px] text-[#71717A]">
-                <span className="text-[#E2C08D]">TIP: </span>
-                {q.tacticalTip}
               </div>
             </div>
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 font-mono">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           <div className="lg:col-span-6 space-y-2">
-            <div className="text-[10px] text-[#71717A] uppercase mb-2">SELECT SKEPTICAL CLAIM:</div>
+            <div className="text-xs text-[#9CA3AF] mb-2">Select a skeptical statement:</div>
             {selfRefutingStatements.map((item, idx) => {
               const isSelected = selectedStatement.statement === item.statement;
               return (
                 <button
                   key={idx}
                   onClick={() => setSelectedStatement(item)}
-                  className={`w-full text-left p-3 rounded border transition-all flex items-center justify-between text-xs ${
+                  className={`w-full text-left p-3 rounded-lg border transition-all flex items-center justify-between text-xs ${
                     isSelected
-                      ? 'border-[#E2C08D] bg-[#1E1E24] text-[#F4F4F5]'
-                      : 'border-[#27272A] bg-[#09090B] text-[#71717A] hover:text-[#F4F4F5]'
+                      ? 'border-[#E2C08D] bg-[#1D212B] text-[#F3F4F6]'
+                      : 'border-[#222630] bg-[#0B0C0E] text-[#9CA3AF] hover:text-[#F3F4F6]'
                   }`}
                 >
                   <span className="truncate pr-2 font-medium">"{item.statement}"</span>
-                  <span className="text-[10px] text-[#E2C08D] whitespace-nowrap">{item.category}</span>
                 </button>
               );
             })}
           </div>
 
-          <div className="lg:col-span-6 border border-[#27272A] bg-[#09090B] p-5 rounded font-mono flex flex-col justify-between">
+          <div className="lg:col-span-6 border border-[#222630] bg-[#0B0C0E] p-5 rounded-xl flex flex-col justify-between text-xs">
             <div>
-              <div className="text-[10px] text-[#E2C08D] font-bold mb-2 uppercase flex items-center justify-between">
-                <span>[SELF-REFUTING ANALYSIS]</span>
-                <span>{selectedStatement.category}</span>
+              <div className="text-xs text-[#E2C08D] font-semibold mb-3">
+                Analysis & Turning Question
               </div>
 
               <div className="mb-3">
-                <div className="text-[10px] text-[#71717A] uppercase mb-1">Target Statement:</div>
-                <div className="text-xs font-semibold text-[#A1A1AA] p-2.5 bg-[#121215] border border-[#27272A] rounded">
+                <div className="text-xs text-[#9CA3AF] mb-1">Claim:</div>
+                <div className="text-xs text-[#F3F4F6] p-2.5 bg-[#13151A] border border-[#222630] rounded-lg">
                   "{selectedStatement.statement}"
                 </div>
               </div>
 
               <div className="mb-3">
-                <div className="text-[10px] text-[#E2C08D] uppercase mb-1 flex items-center gap-1 font-bold">
-                  <Zap className="w-3 h-3 text-[#E2C08D]" />
+                <div className="text-xs text-[#E2C08D] mb-1 font-semibold flex items-center gap-1">
+                  <Sparkles className="w-3.5 h-3.5 text-[#E2C08D]" />
                   <span>Reframing Question:</span>
                 </div>
-                <div className="text-xs font-bold text-[#E2C08D] p-2.5 bg-[#121215] border border-[#27272A] rounded">
+                <div className="text-xs font-semibold text-[#E2C08D] p-2.5 bg-[#13151A] border border-[#222630] rounded-lg">
                   "{selectedStatement.refutationQuestion}"
                 </div>
               </div>
 
-              <div className="p-3 bg-[#121215] border border-[#27272A] rounded text-xs text-[#71717A] leading-relaxed">
-                <div className="text-[10px] text-[#F4F4F5] font-bold mb-1">LOGICAL COLLAPSE:</div>
+              <div className="p-3 bg-[#13151A] border border-[#222630] rounded-lg text-xs text-[#9CA3AF] leading-relaxed">
                 {selectedStatement.explanation}
               </div>
             </div>
@@ -129,13 +120,13 @@ export default function ColumboSimulator({ onSaveClip }) {
                   onSaveClip({
                     title: `Self-Refuting: "${selectedStatement.statement}"`,
                     snippet: `Claim: "${selectedStatement.statement}" ➔ Question: "${selectedStatement.refutationQuestion}"`,
-                    category: '[TACTICS]'
+                    category: 'Tactics'
                   })
                 }
-                className="mt-4 w-full py-2 border border-[#27272A] bg-[#121215] hover:border-[#E2C08D] hover:text-[#E2C08D] text-[#F4F4F5] text-xs font-mono rounded transition-all flex items-center justify-center gap-1.5"
+                className="mt-4 w-full py-2 border border-[#222630] bg-[#13151A] hover:border-[#E2C08D] hover:text-[#E2C08D] text-[#F3F4F6] text-xs font-medium rounded-lg transition-all flex items-center justify-center gap-1.5"
               >
-                <BookmarkPlus className="w-3.5 h-3.5 text-[#E2C08D]" />
-                <span>CLIP TO FIELD DRAWER</span>
+                <Bookmark className="w-3.5 h-3.5 text-[#E2C08D]" />
+                <span>Save to Field Drawer</span>
               </button>
             )}
           </div>

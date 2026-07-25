@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { manuscriptGapData } from '../../data/manuscriptsData';
-import { Clock, FileText, BookmarkPlus } from 'lucide-react';
+import { Clock, FileText, Bookmark } from 'lucide-react';
 
 export default function ManuscriptGapVisualizer({ onSaveClip }) {
   const [activeMetric, setActiveMetric] = useState('gap');
@@ -15,44 +15,42 @@ export default function ManuscriptGapVisualizer({ onSaveClip }) {
   const maxCopies = Math.max(...manuscriptGapData.map((d) => d.copiesCount));
 
   return (
-    <div className="blueprint-card p-5 md:p-6 mb-8 border border-[#27272A] bg-[#121215]">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#27272A] pb-4 mb-6">
+    <div className="blueprint-card p-5 sm:p-6 mb-8 border border-[#222630] bg-[#13151A] rounded-xl">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#222630] pb-4 mb-5">
         <div>
-          <span className="mono-pill mb-1">INTERACTIVE TIMELINE SCHEMATIC</span>
-          <h3 className="text-base font-bold text-[#F4F4F5] tracking-wide mt-1">
-            Manuscript Time Gap & Copy Abundance Comparison
+          <h3 className="text-sm font-semibold text-[#F3F4F6]">
+            Manuscript Time Gap & Copy Comparison
           </h3>
-          <p className="text-xs text-[#71717A] mt-0.5">
-            Time elapsed between original writing and earliest surviving copy across ancient history.
+          <p className="text-xs text-[#9CA3AF] mt-0.5">
+            Comparing the time elapsed between original writing and earliest surviving copy.
           </p>
         </div>
 
-        {/* View Switch */}
-        <div className="flex items-center border border-[#27272A] bg-[#09090B] p-1 rounded font-mono text-xs self-start sm:self-auto">
+        <div className="flex items-center bg-[#0B0C0E] p-1 rounded-lg border border-[#222630] text-xs self-start sm:self-auto">
           <button
             onClick={() => setActiveMetric('gap')}
-            className={`px-3 py-1 rounded transition-colors flex items-center gap-1.5 ${
-              activeMetric === 'gap' ? 'bg-[#1E1E24] text-[#E2C08D] font-bold' : 'text-[#71717A] hover:text-[#F4F4F5]'
+            className={`px-3 py-1 rounded-md transition-all flex items-center gap-1.5 ${
+              activeMetric === 'gap' ? 'bg-[#1D212B] text-[#E2C08D] font-semibold' : 'text-[#9CA3AF] hover:text-[#F3F4F6]'
             }`}
           >
             <Clock className="w-3 h-3" />
-            <span>TIME GAP (YEARS)</span>
+            <span>Time Gap</span>
           </button>
           <button
             onClick={() => setActiveMetric('copies')}
-            className={`px-3 py-1 rounded transition-colors flex items-center gap-1.5 ${
-              activeMetric === 'copies' ? 'bg-[#1E1E24] text-[#E2C08D] font-bold' : 'text-[#71717A] hover:text-[#F4F4F5]'
+            className={`px-3 py-1 rounded-md transition-all flex items-center gap-1.5 ${
+              activeMetric === 'copies' ? 'bg-[#1D212B] text-[#E2C08D] font-semibold' : 'text-[#9CA3AF] hover:text-[#F3F4F6]'
             }`}
           >
             <FileText className="w-3 h-3" />
-            <span>SURVIVING MSS</span>
+            <span>Copy Count</span>
           </button>
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-        {/* Sleek Chart Bars */}
-        <div className="lg:col-span-7 space-y-3 font-mono">
+        {/* Simple Bars */}
+        <div className="lg:col-span-7 space-y-2.5">
           {sortedData.map((item) => {
             const isNT = item.author.startsWith('New Testament');
             const isSelected = selectedAuthor.author === item.author;
@@ -66,25 +64,25 @@ export default function ManuscriptGapVisualizer({ onSaveClip }) {
               <div
                 key={item.author}
                 onClick={() => setSelectedAuthor(item)}
-                className={`p-3 rounded border transition-all cursor-pointer ${
+                className={`p-3 rounded-lg border transition-all cursor-pointer ${
                   isSelected
-                    ? 'border-[#E2C08D]/60 bg-[#1A1A1E]'
-                    : 'border-[#27272A] bg-[#09090B] hover:border-[#3F3F46]'
+                    ? 'border-[#E2C08D]/50 bg-[#1A1D24]'
+                    : 'border-[#222630] bg-[#0B0C0E] hover:border-[#374151]'
                 }`}
               >
                 <div className="flex items-center justify-between text-xs mb-1.5">
-                  <span className={`font-semibold ${isNT ? 'text-[#E2C08D]' : 'text-[#F4F4F5]'}`}>
-                    {item.author} <span className="text-[10px] text-[#71717A]">({item.work})</span>
+                  <span className={`font-medium ${isNT ? 'text-[#E2C08D]' : 'text-[#F3F4F6]'}`}>
+                    {item.author} <span className="text-[11px] text-[#6B7280]">({item.work})</span>
                   </span>
-                  <span className={`font-bold ${isNT ? 'text-[#E2C08D]' : 'text-[#A1A1AA]'}`}>
-                    {activeMetric === 'gap' ? `${item.timeGapYears} yrs gap` : `${item.copiesCount.toLocaleString()} MSS`}
+                  <span className={`text-xs font-semibold ${isNT ? 'text-[#E2C08D]' : 'text-[#9CA3AF]'}`}>
+                    {activeMetric === 'gap' ? `${item.timeGapYears} yr gap` : `${item.copiesCount.toLocaleString()} MSS`}
                   </span>
                 </div>
 
-                <div className="w-full bg-[#121215] h-2.5 rounded-full overflow-hidden">
+                <div className="w-full bg-[#13151A] h-2 rounded-full overflow-hidden">
                   <div
                     className={`h-full rounded-full transition-all duration-500 ${
-                      isNT ? 'bg-[#E2C08D]' : 'bg-[#3F3F46]'
+                      isNT ? 'bg-[#E2C08D]' : 'bg-[#374151]'
                     }`}
                     style={{ width: `${barWidth}%` }}
                   ></div>
@@ -94,40 +92,40 @@ export default function ManuscriptGapVisualizer({ onSaveClip }) {
           })}
         </div>
 
-        {/* Selected Data Inspector Card */}
-        <div className="lg:col-span-5 border border-[#27272A] bg-[#09090B] p-5 rounded font-mono">
-          <div className="text-[10px] text-[#E2C08D] font-bold uppercase tracking-widest mb-2">
-            [MANUSCRIPT RECORD DATA]
+        {/* Selected Info Card */}
+        <div className="lg:col-span-5 border border-[#222630] bg-[#0B0C0E] p-4 sm:p-5 rounded-xl">
+          <div className="text-xs text-[#E2C08D] font-semibold mb-1">
+            Data Details
           </div>
 
-          <h4 className="text-sm font-bold text-[#F4F4F5] border-b border-[#27272A] pb-2 mb-3">
+          <h4 className="text-sm font-semibold text-[#F3F4F6] border-b border-[#222630] pb-2 mb-3">
             {selectedAuthor.author}
           </h4>
 
-          <div className="space-y-2 text-xs text-[#A1A1AA] mb-4">
-            <div className="flex justify-between border-b border-[#27272A]/40 pb-1">
+          <div className="space-y-2 text-xs text-[#9CA3AF] mb-4">
+            <div className="flex justify-between border-b border-[#222630]/60 pb-1">
               <span>Work:</span>
-              <span className="text-[#F4F4F5]">{selectedAuthor.work}</span>
+              <span className="text-[#F3F4F6]">{selectedAuthor.work}</span>
             </div>
-            <div className="flex justify-between border-b border-[#27272A]/40 pb-1">
+            <div className="flex justify-between border-b border-[#222630]/60 pb-1">
               <span>Date Written:</span>
-              <span className="text-[#F4F4F5]">{selectedAuthor.dateWritten}</span>
+              <span className="text-[#F3F4F6]">{selectedAuthor.dateWritten}</span>
             </div>
-            <div className="flex justify-between border-b border-[#27272A]/40 pb-1">
-              <span>Earliest Extant Copy:</span>
-              <span className="text-[#F4F4F5]">{selectedAuthor.earliestCopy}</span>
+            <div className="flex justify-between border-b border-[#222630]/60 pb-1">
+              <span>Earliest Copy:</span>
+              <span className="text-[#F3F4F6]">{selectedAuthor.earliestCopy}</span>
             </div>
-            <div className="flex justify-between border-b border-[#27272A]/40 pb-1">
+            <div className="flex justify-between border-b border-[#222630]/60 pb-1">
               <span>Time Gap:</span>
-              <span className="text-[#E2C08D] font-bold">{selectedAuthor.timeGapYears} Years</span>
+              <span className="text-[#E2C08D] font-semibold">{selectedAuthor.timeGapYears} Years</span>
             </div>
             <div className="flex justify-between">
               <span>Greek Manuscripts:</span>
-              <span className="text-[#E2C08D] font-bold">{selectedAuthor.copiesCount.toLocaleString()}</span>
+              <span className="text-[#E2C08D] font-semibold">{selectedAuthor.copiesCount.toLocaleString()}</span>
             </div>
           </div>
 
-          <p className="text-xs text-[#71717A] leading-relaxed mb-4 p-3 bg-[#121215] border border-[#27272A] rounded">
+          <p className="text-xs text-[#9CA3AF] leading-relaxed mb-4 p-3 bg-[#13151A] rounded-lg border border-[#222630]">
             {selectedAuthor.notes}
           </p>
 
@@ -137,13 +135,13 @@ export default function ManuscriptGapVisualizer({ onSaveClip }) {
                 onSaveClip({
                   title: `${selectedAuthor.author} Manuscript Gap`,
                   snippet: `${selectedAuthor.author} (${selectedAuthor.work}): Written ${selectedAuthor.dateWritten}, earliest copy ${selectedAuthor.earliestCopy} (${selectedAuthor.timeGapYears} yr gap, ${selectedAuthor.copiesCount} MSS).`,
-                  category: '[MSS COMPARISON]'
+                  category: 'Manuscripts'
                 })
               }
-              className="w-full py-2 border border-[#27272A] bg-[#121215] hover:border-[#E2C08D] hover:text-[#E2C08D] text-[#F4F4F5] text-xs font-mono rounded transition-all flex items-center justify-center gap-1.5"
+              className="w-full py-2 border border-[#222630] bg-[#13151A] hover:border-[#E2C08D] hover:text-[#E2C08D] text-[#F3F4F6] text-xs font-medium rounded-lg transition-all flex items-center justify-center gap-1.5"
             >
-              <BookmarkPlus className="w-3.5 h-3.5 text-[#E2C08D]" />
-              <span>CLIP TO FIELD DRAWER</span>
+              <Bookmark className="w-3.5 h-3.5 text-[#E2C08D]" />
+              <span>Save to Field Drawer</span>
             </button>
           )}
         </div>

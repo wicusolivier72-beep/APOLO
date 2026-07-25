@@ -1,6 +1,6 @@
 import React from 'react';
 import { mythBustingList } from '../../data/mythsData';
-import { BookmarkPlus } from 'lucide-react';
+import { Bookmark } from 'lucide-react';
 
 export default function MythBustingModule({ searchFilter, onSaveClip }) {
   const filteredMyths = mythBustingList.filter((m) => {
@@ -14,75 +14,70 @@ export default function MythBustingModule({ searchFilter, onSaveClip }) {
   });
 
   return (
-    <div className="space-y-8 font-mono">
+    <div className="space-y-8">
       {/* Module Header */}
-      <div className="border-b border-[#27272A] pb-4">
-        <span className="mono-pill">MODULE 04</span>
-        <h2 className="text-xl font-bold text-[#F4F4F5] tracking-wide mt-1.5 uppercase">
+      <div className="border-b border-[#222630] pb-4">
+        <span className="subtle-badge">Social Media Myths</span>
+        <h2 className="text-xl font-semibold text-[#F3F4F6] mt-2">
           Pop-Culture Myth-Busting
         </h2>
-        <p className="text-xs text-[#71717A] mt-1 max-w-2xl leading-relaxed">
-          Short-form, high-impact counter-arguments against viral social media myths (Horus/Mithra claims, telephone game fallacies, Nicaea canon legends, and Easter etymology).
+        <p className="text-xs text-[#9CA3AF] mt-1 max-w-2xl leading-relaxed">
+          Short-form counter-arguments against viral claims (Horus/Mithra, telephone game fallacies, Nicaea canon legends, Easter etymology).
         </p>
       </div>
 
-      {/* Myth Cards */}
-      <div className="space-y-5">
+      {/* Cards */}
+      <div className="space-y-4">
         {filteredMyths.map((myth) => (
-          <div key={myth.id} className="blueprint-card border border-[#27272A] bg-[#121215] p-5 rounded">
-            <div className="flex items-center justify-between border-b border-[#27272A] pb-3 mb-4">
-              <span className="mono-pill text-[10px]">{myth.category}</span>
-              <span className="text-[10px] text-[#71717A]">{myth.id}</span>
+          <div key={myth.id} className="blueprint-card border border-[#222630] bg-[#13151A] p-5 rounded-xl">
+            <div className="flex items-center justify-between border-b border-[#222630] pb-3 mb-4">
+              <span className="subtle-badge">{myth.category.replace(/\[|\]/g, '')}</span>
+              <span className="text-xs text-[#6B7280]">{myth.id}</span>
             </div>
 
-            {/* Claim vs Reality */}
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-5 mb-4">
-              <div className="md:col-span-5 p-3.5 bg-[#09090B] border border-[#27272A] rounded">
-                <div className="text-[10px] text-[#71717A] font-bold uppercase mb-1">VIRAL MYTH CLAIM:</div>
-                <h4 className="text-sm font-bold text-[#F4F4F5] mb-2">"{myth.claim}"</h4>
-                <p className="text-xs text-[#71717A] leading-relaxed">{myth.mythDetail}</p>
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mb-4 text-xs">
+              <div className="md:col-span-5 p-3.5 bg-[#0B0C0E] border border-[#222630] rounded-xl">
+                <div className="text-xs text-[#9CA3AF] font-medium mb-1">Viral Claim:</div>
+                <h4 className="text-sm font-semibold text-[#F3F4F6] mb-2">"{myth.claim}"</h4>
+                <p className="text-xs text-[#9CA3AF] leading-relaxed">{myth.mythDetail}</p>
               </div>
 
-              <div className="md:col-span-7 p-3.5 bg-[#09090B] border border-[#27272A] rounded flex flex-col justify-between">
+              <div className="md:col-span-7 p-3.5 bg-[#0B0C0E] border border-[#222630] rounded-xl flex flex-col justify-between">
                 <div>
-                  <div className="text-[10px] text-[#E2C08D] font-bold uppercase mb-1">HISTORICAL REALITY:</div>
-                  <p className="text-xs text-[#F4F4F5] leading-relaxed mb-3">{myth.historicalReality}</p>
+                  <div className="text-xs text-[#E2C08D] font-medium mb-1">Historical Reality:</div>
+                  <p className="text-xs text-[#F3F4F6] leading-relaxed mb-3">{myth.historicalReality}</p>
                 </div>
-                <div className="text-[11px] text-[#E2C08D] pt-2 border-t border-[#27272A]">
-                  <span className="text-[#71717A]">PRIMARY EVIDENCE: </span>
+                <div className="text-xs text-[#E2C08D] pt-2 border-t border-[#222630]">
+                  <span className="text-[#9CA3AF]">Primary Evidence: </span>
                   {myth.primaryEvidence}
                 </div>
               </div>
             </div>
 
-            {/* Quick Bullets */}
-            <div className="p-3 bg-[#09090B] border border-[#27272A] rounded text-xs">
-              <div className="text-[10px] text-[#71717A] font-bold uppercase mb-1.5">30-SECOND CHEAT SHEET:</div>
-              <ul className="space-y-1 text-[#A1A1AA]">
+            <div className="p-3 bg-[#0B0C0E] border border-[#222630] rounded-lg text-xs">
+              <div className="text-xs text-[#9CA3AF] font-medium mb-1.5">30-Second Takeaway:</div>
+              <ul className="space-y-1 text-[#9CA3AF]">
                 {myth.refutationPoints.map((pt, idx) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <span className="text-[#E2C08D]">▸</span>
-                    <span>{pt}</span>
-                  </li>
+                  <li key={idx}>• {pt}</li>
                 ))}
               </ul>
             </div>
 
-            <div className="pt-3 border-t border-[#27272A] mt-4 flex items-center justify-between text-xs">
-              <span className="text-[10px] text-[#71717A]">MYTH CARD</span>
+            <div className="pt-3 border-t border-[#222630] mt-4 flex items-center justify-between text-xs">
+              <span className="text-xs text-[#6B7280]">Myth Card</span>
               {onSaveClip && (
                 <button
                   onClick={() =>
                     onSaveClip({
                       title: `Myth Bust: ${myth.claim}`,
                       snippet: `Myth: "${myth.claim}" ➔ Reality: ${myth.historicalReality} Primary evidence: ${myth.primaryEvidence}`,
-                      category: '[MYTH BUST]'
+                      category: 'Myth Bust'
                     })
                   }
-                  className="flex items-center gap-1 text-[#71717A] hover:text-[#F4F4F5] text-xs"
+                  className="flex items-center gap-1 text-[#9CA3AF] hover:text-[#F3F4F6]"
                 >
-                  <BookmarkPlus className="w-3.5 h-3.5" />
-                  <span>Clip</span>
+                  <Bookmark className="w-3.5 h-3.5" />
+                  <span>Save</span>
                 </button>
               )}
             </div>
