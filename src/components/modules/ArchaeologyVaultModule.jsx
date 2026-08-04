@@ -18,12 +18,12 @@ export default function ArchaeologyVaultModule({ searchFilter }) {
   return (
     <div className="space-y-8">
       {/* Module Header */}
-      <div className="border-b border-[#222630] pb-4">
+      <div className="module-header border-b border-[#222630] pb-4">
         <span className="subtle-badge">Steles & Inscriptions</span>
-        <h2 className="text-2xl font-bold text-[#F3F4F6] mt-2">
+        <h2 className="module-title text-2xl mt-2">
           Archaeological Vault
         </h2>
-        <p className="text-sm text-[#9CA3AF] mt-1 max-w-2xl leading-relaxed">
+        <p className="module-intro text-sm mt-1 max-w-2xl leading-relaxed">
           Inscriptions, burial boxes, and public architecture confirming biblical people, dates, and administrative titles.
         </p>
       </div>

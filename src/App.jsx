@@ -25,7 +25,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0C0E] text-[#F3F4F6] flex flex-col font-sans selection:bg-[#E2C08D] selection:text-[#0B0C0E] antialiased">
+    <div className="app-shell min-h-screen text-[#F3F4F6] flex flex-col font-sans antialiased">
       {/* Header */}
       <Header
         searchFilter={searchFilter}
@@ -33,19 +33,19 @@ export default function App() {
       />
 
       {/* Full-Screen Immersive Landing Hero */}
-      <section className="relative border-b border-[#222630] bg-[#0B0C0E] min-h-[calc(100vh-4rem)] flex flex-col justify-center overflow-hidden">
-        <FloatingPathsBackground position={-1} className="w-full min-h-[calc(100vh-4rem)] flex flex-col justify-center items-center py-16 px-4 sm:px-6">
-          <div className="max-w-4xl mx-auto text-center space-y-6 relative z-10 my-auto">
+      <section className="hero-shell relative border-b min-h-[calc(100vh-4rem)] flex flex-col justify-center overflow-hidden">
+        <FloatingPathsBackground position={-1} className="ambient-field w-full min-h-[calc(100vh-4rem)] flex flex-col justify-center items-center py-16 px-4 sm:px-6">
+          <div className="hero-content max-w-4xl mx-auto text-center space-y-6 relative z-10 my-auto">
             <div className="space-y-3">
               <LogoIcon className="w-16 h-16 sm:w-20 sm:h-20 mx-auto text-[#E2C08D]" />
               <span className="subtle-badge">Academic • Precise • Transparent</span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-[#F3F4F6] tracking-tight">
+            <h1 className="hero-title text-4xl sm:text-6xl lg:text-7xl tracking-tight">
               Extant
             </h1>
 
-            <p className="text-base sm:text-lg text-[#9CA3AF] max-w-2xl mx-auto leading-relaxed font-normal">
+            <p className="hero-copy text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-normal">
               An interactive digital museum for manuscript evidence, verified archaeological inscriptions, early creedal timelines, and conversation guides.
             </p>
 
@@ -53,7 +53,7 @@ export default function App() {
             <div className="pt-4 space-y-6">
               <button
                 onClick={() => scrollToContent()}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#E2C08D] hover:bg-[#E2C08D]/90 text-[#0B0C0E] font-semibold text-sm rounded-full transition-all shadow-lg hover:shadow-[#E2C08D]/10"
+                className="hero-cta inline-flex items-center gap-2 px-6 py-3 font-semibold text-sm rounded-full transition-all"
               >
                 <span>Explore Archive</span>
                 <ArrowDown className="w-4 h-4" />
@@ -63,7 +63,7 @@ export default function App() {
               <div className="flex flex-wrap items-center justify-center gap-2 pt-2 text-xs">
                 <button
                   onClick={() => scrollToContent('module-1')}
-                  className="px-3.5 py-1.5 rounded-full border border-[#222630] bg-[#13151A]/80 hover:border-[#E2C08D] hover:text-[#E2C08D] text-[#9CA3AF] transition-all flex items-center gap-1.5"
+                  className="archive-launcher px-3.5 py-1.5 rounded-full border transition-all flex items-center gap-1.5"
                 >
                   <Layers className="w-3.5 h-3.5" />
                   <span>Manuscripts & Text</span>
@@ -71,7 +71,7 @@ export default function App() {
 
                 <button
                   onClick={() => scrollToContent('module-2')}
-                  className="px-3.5 py-1.5 rounded-full border border-[#222630] bg-[#13151A]/80 hover:border-[#E2C08D] hover:text-[#E2C08D] text-[#9CA3AF] transition-all flex items-center gap-1.5"
+                  className="archive-launcher px-3.5 py-1.5 rounded-full border transition-all flex items-center gap-1.5"
                 >
                   <Landmark className="w-3.5 h-3.5" />
                   <span>Archaeology Vault</span>
@@ -79,7 +79,7 @@ export default function App() {
 
                 <button
                   onClick={() => scrollToContent('module-3')}
-                  className="px-3.5 py-1.5 rounded-full border border-[#222630] bg-[#13151A]/80 hover:border-[#E2C08D] hover:text-[#E2C08D] text-[#9CA3AF] transition-all flex items-center gap-1.5"
+                  className="archive-launcher px-3.5 py-1.5 rounded-full border transition-all flex items-center gap-1.5"
                 >
                   <History className="w-3.5 h-3.5" />
                   <span>Historical Jesus</span>
@@ -87,7 +87,7 @@ export default function App() {
 
                 <button
                   onClick={() => scrollToContent('module-4')}
-                  className="px-3.5 py-1.5 rounded-full border border-[#222630] bg-[#13151A]/80 hover:border-[#E2C08D] hover:text-[#E2C08D] text-[#9CA3AF] transition-all flex items-center gap-1.5"
+                  className="archive-launcher px-3.5 py-1.5 rounded-full border transition-all flex items-center gap-1.5"
                 >
                   <ShieldAlert className="w-3.5 h-3.5" />
                   <span>Myth Busting</span>
@@ -95,7 +95,7 @@ export default function App() {
 
                 <button
                   onClick={() => scrollToContent('module-5')}
-                  className="px-3.5 py-1.5 rounded-full border border-[#222630] bg-[#13151A]/80 hover:border-[#E2C08D] hover:text-[#E2C08D] text-[#9CA3AF] transition-all flex items-center gap-1.5"
+                  className="archive-launcher px-3.5 py-1.5 rounded-full border transition-all flex items-center gap-1.5"
                 >
                   <MessageSquare className="w-3.5 h-3.5" />
                   <span>Tactics</span>
@@ -132,7 +132,7 @@ export default function App() {
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-[#222630] bg-[#13151A] py-6 px-4 sm:px-6 text-xs text-[#9CA3AF]">
+      <footer className="site-footer border-t py-6 px-4 sm:px-6 text-xs text-[#9CA3AF]">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <LogoIcon className="w-4 h-4 text-[#E2C08D]" />

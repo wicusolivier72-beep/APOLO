@@ -25,7 +25,7 @@ export function LogoIcon({ className = "w-8 h-8", color = "#E2C08D" }) {
       <path d="M8 50 H92" strokeWidth="1.8" />
 
       {/* Outline Cross */}
-      <path d="M43 22 H57 V43 H78 V57 H57 V78 H43 V57 H22 V43 H43 Z" strokeWidth="2.5" fill="#0B0C0E" />
+      <path d="M43 22 H57 V43 H78 V57 H57 V78 H43 V57 H22 V43 H43 Z" strokeWidth="2.5" fill="#09090B" />
     </svg>
   );
 }

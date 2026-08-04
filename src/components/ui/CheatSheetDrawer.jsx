@@ -16,8 +16,8 @@ export default function CheatSheetDrawer({ isOpen, onClose, savedClips, onRemove
     <div className="fixed inset-0 z-50 flex justify-end font-sans">
       <div className="absolute inset-0 bg-black/60 backdrop-blur-xs" onClick={onClose}></div>
 
-      <div className="relative w-full max-w-md bg-[#0B0C0E] border-l border-[#222630] h-full flex flex-col z-10 shadow-2xl">
-        <div className="p-4 border-b border-[#222630] bg-[#13151A] flex items-center justify-between">
+      <div className="field-drawer relative w-full max-w-md bg-[#0B0C0E] border-l border-[#222630] h-full flex flex-col z-10 shadow-2xl">
+        <div className="field-drawer__header p-4 border-b border-[#222630] bg-[#13151A] flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Bookmark className="w-4 h-4 text-[#E2C08D]" />
             <div>
@@ -80,7 +80,7 @@ export default function CheatSheetDrawer({ isOpen, onClose, savedClips, onRemove
         </div>
 
         {savedClips.length > 0 && (
-          <div className="p-4 border-t border-[#222630] bg-[#13151A] flex items-center justify-between text-sm">
+          <div className="field-drawer__footer p-4 border-t border-[#222630] bg-[#13151A] flex items-center justify-between text-sm">
             <button
               onClick={onClearAll}
               className="text-sm text-red-400 hover:underline flex items-center gap-1"

@@ -6,18 +6,18 @@ export default function HistoricalJesusModule({ searchFilter }) {
   return (
     <div className="space-y-8">
       {/* Module Header */}
-      <div className="border-b border-[#222630] pb-4">
+      <div className="module-header border-b border-[#222630] pb-4">
         <span className="subtle-badge">Creeds & Witnesses</span>
-        <h2 className="text-2xl font-bold text-[#F3F4F6] mt-2">
+        <h2 className="module-title text-2xl mt-2">
           Historical Jesus & Early Creeds
         </h2>
-        <p className="text-sm text-[#9CA3AF] mt-1 max-w-2xl leading-relaxed">
+        <p className="module-intro text-sm mt-1 max-w-2xl leading-relaxed">
           Eyewitness creedal chronology (1 Corinthians 15), non-Christian Roman/Jewish historians, and Minimal Facts.
         </p>
       </div>
 
       {/* 1 Cor 15 Timeline */}
-      <div className="blueprint-card p-6 sm:p-7 border border-[#222630] bg-[#13151A] rounded-xl">
+      <div className="blueprint-card timeline-panel p-6 sm:p-7 border border-[#222630] bg-[#13151A] rounded-xl">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#222630] pb-4 mb-6">
           <div>
             <h3 className="text-base font-semibold text-[#F3F4F6]">1 Corinthians 15:3–8 Creed Timeline</h3>
@@ -27,9 +27,9 @@ export default function HistoricalJesusModule({ searchFilter }) {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {creedTimelineSteps.map((step, idx) => (
-            <div key={idx} className="border border-[#222630] bg-[#0B0C0E] p-5 rounded-xl flex flex-col justify-between h-full">
+            <div key={idx} className="timeline-step border border-[#222630] bg-[#0B0C0E] p-5 rounded-xl flex flex-col justify-between h-full">
               <div>
-                <span className="text-sm text-[#E2C08D] font-bold block mb-2">{step.year}</span>
+                <span className="timeline-marker text-sm text-[#E2C08D] font-bold block mb-2">{step.year}</span>
                 <h4 className="text-base font-semibold text-[#F3F4F6] mb-3 leading-snug">{step.title}</h4>
                 <p className="text-sm text-[#9CA3AF] leading-relaxed">{step.description}</p>
               </div>
@@ -48,7 +48,7 @@ export default function HistoricalJesusModule({ searchFilter }) {
 
       {/* Non-Christian Historians */}
       <div>
-        <h3 className="text-sm font-semibold text-[#F3F4F6] uppercase tracking-wider mb-4">
+        <h3 className="section-label text-sm mb-4">
           Non-Christian Ancient Witnesses ({nonChristianHistorians.length})
         </h3>
 

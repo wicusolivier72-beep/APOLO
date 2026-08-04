@@ -27,7 +27,7 @@ export default function MinimalFactsMatrix() {
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto border border-[#222630] bg-[#0B0C0E] rounded-xl mb-5 text-sm">
+      <div className="matrix-table overflow-x-auto border border-[#222630] bg-[#0B0C0E] rounded-xl mb-5 text-sm">
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="border-b border-[#222630] bg-[#13151A] text-[#9CA3AF] text-xs uppercase font-medium">

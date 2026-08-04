@@ -22,9 +22,9 @@ export function FloatingPathsBackground({
 
   return (
     <div className={cn("w-full relative overflow-hidden", className)}>
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="ambient-field__paths absolute inset-0 pointer-events-none">
         <svg
-          className="w-full h-full text-[#E2C08D]"
+          className="ambient-field__svg w-full h-full text-[#E2C08D]"
           viewBox="0 0 696 316"
           fill="none"
         >

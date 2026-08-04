@@ -26,7 +26,7 @@ export default function ManuscriptGapVisualizer() {
           </p>
         </div>
 
-        <div className="flex items-center bg-[#0B0C0E] p-1 rounded-lg border border-[#222630] text-sm self-start sm:self-auto">
+        <div className="segmented-control flex items-center bg-[#0B0C0E] p-1 rounded-lg border border-[#222630] text-sm self-start sm:self-auto">
           <button
             onClick={() => setActiveMetric('gap')}
             className={`px-3 py-1.5 rounded-md transition-all flex items-center gap-1.5 ${

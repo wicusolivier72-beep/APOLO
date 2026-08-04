@@ -15,12 +15,12 @@ export default function MythBustingModule({ searchFilter }) {
   return (
     <div className="space-y-8">
       {/* Module Header */}
-      <div className="border-b border-[#222630] pb-4">
+      <div className="module-header border-b border-[#222630] pb-4">
         <span className="subtle-badge">Social Media Myths</span>
-        <h2 className="text-2xl font-bold text-[#F3F4F6] mt-2">
+        <h2 className="module-title text-2xl mt-2">
           Pop-Culture Myth-Busting
         </h2>
-        <p className="text-sm text-[#9CA3AF] mt-1 max-w-2xl leading-relaxed">
+        <p className="module-intro text-sm mt-1 max-w-2xl leading-relaxed">
           Short-form counter-arguments against viral claims (Horus/Mithra, telephone game fallacies, Nicaea canon legends, Easter etymology).
         </p>
       </div>
