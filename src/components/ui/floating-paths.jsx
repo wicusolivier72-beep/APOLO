@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 export function FloatingPathsBackground({
@@ -7,7 +6,7 @@ export function FloatingPathsBackground({
   children,
   className,
 }) {
-  const paths = Array.from({ length: 36 }, (_, i) => ({
+  const paths = Array.from({ length: 20 }, (_, i) => ({
     id: i,
     d: `M-${380 - i * 5 * position} -${189 + i * 6}C-${
       380 - i * 5 * position
@@ -29,23 +28,12 @@ export function FloatingPathsBackground({
           fill="none"
         >
           {paths.map((path) => (
-            <motion.path
+            <path
               key={path.id}
               d={path.d}
               stroke="currentColor"
               strokeWidth={path.width}
               strokeOpacity={0.06 + path.id * 0.012}
-              initial={{ pathLength: 0.3, opacity: 0.4 }}
-              animate={{
-                pathLength: 1,
-                opacity: [0.2, 0.5, 0.2],
-                pathOffset: [0, 1, 0],
-              }}
-              transition={{
-                duration: 20 + Math.random() * 10,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "linear",
-              }}
             />
           ))}
         </svg>
